@@ -16,18 +16,21 @@
     </v-app-bar>
 
     <v-content>
-      <PostsView/>
-      <PostModal id="post-modal"/>
+      <Profile />
+      <PostsView />
+      <!-- <PostModal id="post-modal" /> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
+import Profile from './components/TheProfile/TheProfile'
 import PostsView from './components/ThePostsView/ThePostsView'
 import PostModal from './components/ThePostModal/ThePostModal'
 export default {
   name: 'App',
   components: {
+    Profile,
     PostsView,
     PostModal
   },
