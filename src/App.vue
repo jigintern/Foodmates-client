@@ -16,21 +16,21 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <PostList/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import PostList from './components/ThePostsView/ThePostsView'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    PostList,
   },
   data: () => ({
     //
-  }),
-};
+  })
+}
 </script>
