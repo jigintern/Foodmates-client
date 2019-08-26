@@ -2,7 +2,7 @@
 <div class="profile">
   <div style="background-color:#F5DD64;width:120pt;height:120pt;border-radius:60pt"></div>
   <div class="case">
-    <h2 class="account-name">{{ account.name }}</h2>
+    <h2 class="account-name">{{ account.name }}<v-btn outlined class="button orange--text" rounded>follow</v-btn></h2>
     <small class="account-friendship">{{ account.following }} following {{ account.followed }} followed</small>
     <p class="account-comment">{{ account.comment }}</p>
     <div class="case">
@@ -30,6 +30,10 @@
       font-size 32pt
       height 1.2em
       font-weight 400
+
+      .button
+        margin-left 24pt
+        font-size 10pt
 
     .account-friendship
       font-size 6.4pt
