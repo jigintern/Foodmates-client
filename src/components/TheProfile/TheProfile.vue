@@ -60,7 +60,7 @@ export default {
   name: 'thepostview',
   data: function () {
     return {
-      account: 
+      account:
         {
           'name': 'watαno',
           'following': 100,

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
+import Profile from './views/Profile.vue'
 
 Vue.use(Router)
 
@@ -20,6 +21,12 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+          // "http://localhost:8080/Profile"
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     }
   ]
 })

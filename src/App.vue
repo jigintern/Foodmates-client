@@ -1,10 +1,7 @@
 <template>
   <v-app>
     <v-content>
-    <router-view />
-      <Profile />
-      <PostsView />
-      <!-- <PostModal id="post-modal" /> -->
+      <router-view />
     </v-content>
   </v-app>
 </template>

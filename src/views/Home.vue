@@ -2,15 +2,13 @@
   <div>
     <div>
       <TheHeader/>
-      <v-container>
+      <v-container grid-list-md>
         <v-layout row>
-            <v-flex md4>
-              <div v-for="n in 10">
-                <PostsView/>
-              </div>
-            </v-flex>
+          <v-flex v-for="index in Array.from(Array(3).keys())" :key="`column-${index}`">
+            <PostsView v-for="element in posts" :key="element.dish_name" :post="element" />
+          </v-flex>
         </v-layout>
-</v-container>
+      </v-container>
     </div>
     <!--<PostModal id="post-modal"/>-->
   </div>
@@ -31,6 +29,52 @@ export default {
     PostsView,
     PostModal,
     TheHeader
+  },
+  data: function() {
+    return {
+      posts: [
+        {
+      		"dish_name":             "塩ラーメン",
+      		"restaurant_name":       "らあめん極",
+      		"restaurant_place":      "東京都 新宿区",
+      		"user_name":             "watano",
+      		"user_icon_address":     "img/users/icon/1.jpg",
+      		"is_bookmark":           false,
+      		"content":               "さっぱりしていて美味しかった。",
+      		"content_image_address": "public/img/posts/210.jpg"
+      	},
+      	{
+      		"dish_name":             "特製やきそば",
+      		"restaurant_name":       "麺麺",
+      		"restaurant_place":      "北海道 札幌市",
+      		"user_name":             "でみ",
+      		"user_icon_address":     "img/users/icon/2.jpg",
+      		"is_bookmark":           true,
+      		"content":               "量が多くて満足。また行きたい。",
+      		"content_image_address": "public/img/posts/222.jpg",
+      	},
+      	{
+      		"dish_name":             "虹色ハンバーグ",
+      		"restaurant_name":       "謎の店",
+      		"restaurant_place":      "沖縄県 沖縄市",
+      		"user_name":             "はたはた",
+      		"user_icon_address":     "public/img/users/icon/6.jpg",
+      		"is_bookmark":           false,
+      		"content":               "宇宙の味がした。",
+      		"content_image_address": "public/img/posts/309.jpg",
+      	},
+      	{
+      		"dish_name":             "わんこCOMP",
+      		"restaurant_name":       "jig.jp",
+      		"restaurant_place":      "福井県 鯖江市",
+      		"user_name":             "箒コウモリ",
+      		"user_icon_address":     "public/img/users/icon/3.jpg",
+      		"is_bookmark":           true,
+      		"content":               "一生分の栄養を摂取したような気分になった",
+      		"content_image_address": "public/img/posts/111.jpg",
+      	}
+      ]
+    }
   }
 }
 </script>
