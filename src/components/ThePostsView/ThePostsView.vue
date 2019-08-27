@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-card class="post" v-for="post in post_data" color="secondary">
-      <header class="header">
+    <v-card class="post" v-for="post in post_data">
+      <header class="header" color="#FFD54F">
         <span class="dish_name">{{ post.dish_name }}</span>
         <v-spacer/>
         <div class="case">

@@ -10,7 +10,5 @@ export default new Vuetify({
     iconfont: 'mdi'
   },
   theme: {
-    primary: colors.green.darken3,
-    secondary: colors.indigo.darken1
   }
 })

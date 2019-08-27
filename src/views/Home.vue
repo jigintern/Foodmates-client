@@ -2,9 +2,15 @@
   <div>
     <div>
       <TheHeader/>
-      <div v-for="n in 10">
-        <PostsView/>
-      </div>
+      <v-container>
+        <v-layout row>
+            <v-flex md4>
+              <div v-for="n in 10">
+                <PostsView/>
+              </div>
+            </v-flex>
+        </v-layout>
+</v-container>
     </div>
     <!--<PostModal id="post-modal"/>-->
   </div>
