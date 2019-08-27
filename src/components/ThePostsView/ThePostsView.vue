@@ -1,35 +1,33 @@
 <template>
-  <div>
-    <v-card class="post">
-      <header class="header" color="#FFD54F">
-        <span class="dish_name">{{ post.dish_name }}</span>
-        <v-spacer/>
-        <div class="case">
-          <small class="restaurant_name">{{ post.restaurant_name }}</small>
-          <small class="restaurant_place">{{ post.restaurant_place }}</small>
-        </div>
-      </header>
-      <div class="status">
-        <v-avatar>
-          <img :src="post.user_icon_address">
-        </v-avatar>
-        <div class="case">
-          <div class="case">
-            <small class="posttime">{{ post.posttime }}</small>
-            <span class="user_name">{{ post.user_name }}</span>
-          </div>
-          <p class="content">
-            {{ post.content }}
-          </p>
-        </div>
+  <v-card class="post ma-0" :style="{'height': '100%'}">
+    <header class="header" color="#FFD54F">
+      <span class="dish_name">{{ post.dish_name }}</span>
+      <v-spacer/>
+      <div class="case">
+        <small class="restaurant_name">{{ post.restaurant_name }}</small>
+        <small class="restaurant_place">{{ post.restaurant_place }}</small>
       </div>
-      <div class="button-case">
-          <v-icon class="button">mdi-bookmark</v-icon>
-          <v-icon class="button">mdi-forum</v-icon>
-          <v-icon class="button">mdi-more_vert</v-icon>
+    </header>
+    <div class="status">
+      <v-avatar>
+        <img :src="post.user_icon_address">
+      </v-avatar>
+      <div class="case">
+        <div class="case">
+          <small class="posttime">{{ post.posttime }}</small>
+          <span class="user_name">{{ post.user_name }}</span>
+        </div>
+        <p class="content">
+          {{ post.content }}
+        </p>
       </div>
-    </v-card>
-  </div>
+    </div>
+    <div class="button-case">
+        <v-icon class="button">mdi-bookmark</v-icon>
+        <v-icon class="button">mdi-forum</v-icon>
+        <v-icon class="button">mdi-more_vert</v-icon>
+    </div>
+  </v-card>
 </template>
 
 <script>
@@ -40,7 +38,6 @@
 <style lang="stylus" scoped>
 .post
   margin 12pt
-  width 240pt
   font-size 10pt
 
   .header

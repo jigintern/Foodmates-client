@@ -2,10 +2,10 @@
   <div>
     <div>
       <TheHeader/>
-      <v-container grid-list-md>
+      <v-container grid-list-xl>
         <v-layout row>
-          <v-flex v-for="index in Array.from(Array(3).keys())" :key="`column-${index}`">
-            <PostsView v-for="element in posts" :key="element.dish_name" :post="element" />
+          <v-flex justify-center xs12 md6 lg4 v-for="element in posts" :key="element.dish_name">
+            <PostsView :post="element"/>
           </v-flex>
         </v-layout>
       </v-container>
@@ -50,7 +50,7 @@ export default {
       		"user_name":             "でみ",
       		"user_icon_address":     "img/users/icon/2.jpg",
       		"is_bookmark":           true,
-      		"content":               "量が多くて満足。また行きたい。",
+      		"content":               "量が多くて満足取したような気分になったwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww。また行きたい。",
       		"content_image_address": "public/img/posts/222.jpg",
       	},
       	{
@@ -71,6 +71,26 @@ export default {
       		"user_icon_address":     "public/img/users/icon/3.jpg",
       		"is_bookmark":           true,
       		"content":               "一生分の栄養を摂取したような気分になった",
+      		"content_image_address": "public/img/posts/111.jpg",
+      	},
+      	{
+      		"dish_name":             "虹色ハンバーグ",
+      		"restaurant_name":       "謎の店",
+      		"restaurant_place":      "沖縄県 沖縄市",
+      		"user_name":             "はたはた",
+      		"user_icon_address":     "public/img/users/icon/6.jpg",
+      		"is_bookmark":           false,
+      		"content":               "宇宙の味がした。",
+      		"content_image_address": "public/img/posts/309.jpg",
+      	},
+      	{
+      		"dish_name":             "わんこCOMP",
+      		"restaurant_name":       "jig.jp",
+      		"restaurant_place":      "福井県 鯖江市",
+      		"user_name":             "箒コウモリ",
+      		"user_icon_address":     "public/img/users/icon/3.jpg",
+      		"is_bookmark":           true,
+      		"content":               "一生分の栄養を摂取したような気分になったwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
       		"content_image_address": "public/img/posts/111.jpg",
       	}
       ]

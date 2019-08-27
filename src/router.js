@@ -17,12 +17,6 @@ export default new Router({
       component: Home
     },
     {
-      // "http://localhost:8080/about"
-      path: '/about',
-      name: 'about',
-      component: About
-    },
-    {
           // "http://localhost:8080/Profile"
       path: '/profile',
       name: 'profile',
