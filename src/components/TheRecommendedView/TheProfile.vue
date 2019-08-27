@@ -7,7 +7,7 @@
     <p class="account-comment">{{ account.comment }}</p>
     <div class="case">
       <small class="detail"><v-icon class="figure">mdi-cake</v-icon>{{ account.birthday }}</small>
-      <small class="detail"><v-icon class="figure">mdi-message-processing</v-icon>{{ account.address }}</small>
+      <small class="detail"><v-icon class="figure">mdi-textsms</v-icon>{{ account.address }}</small>
     </div>
   </div>
 </div>
