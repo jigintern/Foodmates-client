@@ -2,7 +2,7 @@
   <div>
     <Header/>
 	<PostsView :posts="posts" />
-	<!--<PostModal id="post-modal"/>-->
+	<!-- <PostModal id="post-modal"/> -->
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
       		"restaurant_name":       "らあめん極",
       		"restaurant_place":      "東京都 新宿区",
       		"user_name":             "watano",
+      		"posttime":             "000000",
       		"user_icon_address":     "img/users/icon/1.jpg",
       		"is_bookmark":           false,
       		"content":               "さっぱりしていて美味しかった。",
@@ -39,8 +40,8 @@ export default {
       		"user_name":             "でみ",
       		"user_icon_address":     "img/users/icon/2.jpg",
       		"is_bookmark":           true,
-      		"content":               "量が多くて満足取したような気分になったwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww。また行きたい。",
-      		"content_image_address": "public/img/posts/222.jpg",
+      		"content":               "######################################################################################################",
+      		"content_image_address": "",
       	},
       	{
       		"dish_name":             "虹色ハンバーグ",
@@ -60,7 +61,7 @@ export default {
       		"user_icon_address":     "public/img/users/icon/3.jpg",
       		"is_bookmark":           true,
       		"content":               "一生分の栄養を摂取したような気分になった",
-      		"content_image_address": "public/img/posts/111.jpg",
+      		"content_image_address": "",
       	},
       	{
       		"dish_name":             "虹色ハンバーグ",
@@ -79,8 +80,8 @@ export default {
       		"user_name":             "箒コウモリ",
       		"user_icon_address":     "public/img/users/icon/3.jpg",
       		"is_bookmark":           true,
-      		"content":               "一生分の栄養を摂取したような気分になったwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-      		"content_image_address": "public/img/posts/111.jpg",
+      		"content":               "######################################################################################################",
+      		"content_image_address": "",
       	}
       ]
     }
