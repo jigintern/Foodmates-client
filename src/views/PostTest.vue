@@ -5,27 +5,29 @@
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="element in posts" :key="element.dish_name">
-            <PostsView :post="element"/>
+            <Post :post="element"/>
           </v-flex>
         </v-layout>
       </v-container>
     </div>
-    <PostModal id="post-modal"/>
+    <!--<PostModal id="post-modal"/>-->
   </div>
 </template>
 
 <script>
 /* eslint-disable */
 import TheHeader from '../components/TheHeader/TheHeader'
+import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 
-const postURL = "http://localhost:8080/api/v1/posts/"
+const postURL = "http://localhost:8080/api/v1/posts/readall/"
 
 export default {
   components: {
     PostsView,
     PostModal,
+    Post,
     TheHeader
   },
   data: {

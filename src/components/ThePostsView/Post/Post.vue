@@ -14,11 +14,11 @@
       </v-avatar>
       <div class="case">
         <div class="case">
-          <small class="posttime">{{ post.posttime }}</small>
+          <small class="posttime">{{ post.created_at }}</small>
           <span class="user_name">{{ post.user_name }}</span>
         </div>
         <p class="content">
-          {{ post.content }}
+          {{ post.comment }}
         </p>
       </div>
     </div>

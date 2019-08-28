@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-xl>
+    {{ post }}
     <v-layout row>
       <v-flex v-for="element in posts" :key="element.dish_name" justify-center xs12 md6 lg4>
         <Post :post="element"/>
@@ -16,6 +17,6 @@ export default {
   components: {
     Post
   },
-  props: ['posts']
+  props: ['post']
 }
 </script>
