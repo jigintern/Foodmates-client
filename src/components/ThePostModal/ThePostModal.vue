@@ -16,28 +16,6 @@
 </v-overlay>
 </template>
 
-<style lang="stylus" scoped>
-.postform
-  padding 8pt 12pt
-  width 240pt
-  background-color #fff
-  color #707070
-
-  .case
-    display flex
-    align-items center
-
-    .option-buttoncase
-      flex-grow 1
-      
-      .button
-        margin 0 4pt
-
-    .buttoncase
-      .button
-        margin 0 4pt
-</style>
-
 <script>
 import SearchWindow from '../TheHeader/TheHeaderSearchWindow/TheHeaderSearchWindow'
 export default {
@@ -61,3 +39,25 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.postform
+  padding 8pt 12pt
+  width 240pt
+  background-color #fff
+  color #707070
+
+  .case
+    display flex
+    align-items center
+
+    .option-buttoncase
+      flex-grow 1
+
+      .button
+        margin 0 4pt
+
+    .buttoncase
+      .button
+        margin 0 4pt
+</style>
