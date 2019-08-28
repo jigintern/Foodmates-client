@@ -15,8 +15,6 @@
   </div>
 </template>
 
-
-
 <script>
 /* eslint-disable */
 import TheHeader from '../components/TheHeader/TheHeader'

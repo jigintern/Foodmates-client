@@ -21,7 +21,7 @@ import SearchWindow from '../TheHeader/TheHeaderSearchWindow/TheHeaderSearchWind
 export default {
   name: 'thepostview',
   components: {
-    SearchWindow,
+    SearchWindow
   },
   data: function () {
     return {
@@ -32,8 +32,8 @@ export default {
           'restrant_address': '京都府舞鶴市',
           'posttime': '2019-01-01',
           'postauthor': '箒コウモリ',
-          'postbody': '味ついてておいしいです',
-        },
+          'postbody': '味ついてておいしいです'
+        }
       ]
     }
   }

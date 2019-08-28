@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header/>
-	<PostsView :posts="posts" />
-	<!--<PostModal id="post-modal"/>-->
+  	<PostsView :posts="posts" />
+  	<!--<PostModal id="post-modal"/>-->
   </div>
 </template>
 
