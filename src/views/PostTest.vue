@@ -4,8 +4,8 @@
       <TheHeader/>
       <v-container grid-list-xl>
         <v-layout row>
-          <v-flex justify-center xs12 md6 lg4 v-for="element in posts" :key="element.dish_name">
-            <Post :post="element"/>
+          <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
+            <Post :post="post"/>
           </v-flex>
         </v-layout>
       </v-container>
