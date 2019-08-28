@@ -11,11 +11,13 @@
       <v-avatar class="mr-4" style="">
         <img :src="post.user_icon_address">
       </v-avatar>
-      <div class="d-flex flex-column">
-        <span class="" style="font-size:8px;">{{ post.posttime }}</span>
-        <span class="mb-2" style="font-size:16px;">{{ post.user_name }}</span>
-        <p class="" style="font-size:12px;">
-          {{ post.content }}
+      <div class="case">
+        <div class="case">
+          <small class="posttime">{{ post.created_at }}</small>
+          <span class="user_name">{{ post.user_name }}</span>
+        </div>
+        <p class="content">
+          {{ post.comment }}
         </p>
       </div>
     </div>

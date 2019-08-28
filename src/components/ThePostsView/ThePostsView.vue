@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-xl>
+    {{ post }}
     <v-layout row>
       <v-flex v-for="post in posts" :key="post.dish_name" justify-center xs12 md6 lg4>
         <Post v-if="post.content_image_address==''" :post="post"/>
@@ -19,6 +20,6 @@ export default {
     Post,
     PostWithPhoto
   },
-  props: ['posts']
+  props: ['post']
 }
 </script>

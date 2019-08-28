@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import About from './views/About.vue'
 import Profile from './views/Profile.vue'
+import PostTest from './views/PostTest.vue'
 
 Vue.use(Router)
 
@@ -16,10 +18,21 @@ export default new Router({
       component: Home
     },
     {
-          // "http://localhost:8080/Profile"
+      // "http://localhost:8080/Profile"
       path: '/profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      // "http://localhost:8080/Profile"
+      path: '/postTest',
+      name: 'postTest',
+      component: PostTest
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     }
   ]
 })

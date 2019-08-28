@@ -16,6 +16,30 @@
 </v-overlay>
 </template>
 
+<script>
+import SearchWindow from '../TheHeader/TheHeaderSearchWindow/TheHeaderSearchWindow'
+export default {
+  name: 'thepostview',
+  components: {
+    SearchWindow
+  },
+  data: function () {
+    return {
+      post_data: [
+        {
+          'foodname': 'カレーライス（中辛）',
+          'restrant_name': 'レストランDEMI',
+          'restrant_address': '京都府舞鶴市',
+          'posttime': '2019-01-01',
+          'postauthor': '箒コウモリ',
+          'postbody': '味ついてておいしいです'
+        }
+      ]
+    }
+  }
+}
+</script>
+
 <style lang="stylus" scoped>
 .postform
   padding 8pt 12pt
@@ -29,7 +53,7 @@
 
     .option-buttoncase
       flex-grow 1
-      
+
       .button
         margin 0 4pt
 
@@ -37,27 +61,3 @@
       .button
         margin 0 4pt
 </style>
-
-<script>
-import SearchWindow from '../TheHeader/TheHeaderSearchWindow/TheHeaderSearchWindow'
-export default {
-  name: 'thepostview',
-  components: {
-    SearchWindow,
-  },
-  data: function () {
-    return {
-      post_data: [
-        {
-          'foodname': 'カレーライス（中辛）',
-          'restrant_name': 'レストランDEMI',
-          'restrant_address': '京都府舞鶴市',
-          'posttime': '2019-01-01',
-          'postauthor': '箒コウモリ',
-          'postbody': '味ついてておいしいです',
-        },
-      ]
-    }
-  }
-}
-</script>
