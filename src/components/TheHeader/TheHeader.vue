@@ -1,10 +1,7 @@
 <template>
-  <v-toolbar color="#F5DD64" fixed>
-    <v-icon>mdi-delete-circle</v-icon>
-    <div @click="reset">
-      <v-btn>ﾌﾛｽﾄｵﾊﾞｻﾝ</v-btn>
-    </div>
-    <v-toolbar-title>Foodmates</v-toolbar-title>
+  <v-toolbar class="orange">
+    <v-icon>mdi-circle</v-icon>
+    <v-toolbar-title @click="reload">Foodmates</v-toolbar-title>
     <v-spacer/>
     <TheHeaderSearchWindow/>
   </v-toolbar>
@@ -26,7 +23,7 @@ export default {
     }
   },
   methods: {
-    reset: function () {
+    reload: function () {
       this.$router.go({path: this.$router.currentRoute.path, force: true})
     }
   }

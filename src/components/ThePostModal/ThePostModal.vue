@@ -10,8 +10,8 @@
     </div>
     <div class="case">
       <div class="option-buttoncase">
-        <v-icon class="button orange--text">mdi-menu</v-icon>
-        <v-icon class="button orange--text">mdi-menu</v-icon>
+        <v-icon class="button orange--text">mdi-message-text</v-icon>
+        <v-icon class="button orange--text">mdi-message-image</v-icon>
       </div>
       <div class="buttoncase">
         <v-btn class="button orange">投稿</v-btn>

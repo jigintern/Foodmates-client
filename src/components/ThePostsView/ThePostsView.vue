@@ -20,6 +20,8 @@ export default {
     Post,
     PostWithPhoto
   },
-  props: ['posts']
+  props: [
+      'posts'
+    ]
 }
 </script>
