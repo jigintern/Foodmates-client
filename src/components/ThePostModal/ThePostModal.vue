@@ -1,7 +1,13 @@
 <template>
 <v-overlay>
-  <v-card class="postform">
-    <SearchWindow />
+  <v-card class="postform" light>
+    <div>
+      <v-autocomplete
+        :items="components"
+        filled
+        rounded
+    ></v-autocomplete>
+    </div>
     <div class="case">
       <div class="option-buttoncase">
         <v-icon class="button orange--text">mdi-menu</v-icon>
@@ -23,18 +29,9 @@ export default {
   components: {
     SearchWindow
   },
-  data: function () {
+  data () {
     return {
-      post_data: [
-        {
-          'foodname': 'カレーライス（中辛）',
-          'restrant_name': 'レストランDEMI',
-          'restrant_address': '京都府舞鶴市',
-          'posttime': '2019-01-01',
-          'postauthor': '箒コウモリ',
-          'postbody': '味ついてておいしいです'
-        }
-      ]
+      components: ['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields']
     }
   }
 }
