@@ -1,60 +1,42 @@
 <template>
 <v-overlay>
-  <v-card class="postform" light>
-    <div>
-      <v-autocomplete
-        :items="components"
-        filled
-        rounded
-    ></v-autocomplete>
+  <v-card class="pa-4" light width=360>
+    <SearchWindow />
+    <div class="">
+      <img class="px-2 pb-4" :src="photo_url" height=80>
     </div>
-    <div class="case">
-      <div class="option-buttoncase">
-        <v-icon class="button orange--text">mdi-message-text</v-icon>
-        <v-icon class="button orange--text">mdi-message-image</v-icon>
-      </div>
-      <div class="buttoncase">
-        <v-btn class="button orange">投稿</v-btn>
-        <v-btn outlined class="button orange--text">キャンセル</v-btn>
-      </div>
+    <div class="d-flex align-center">
+      <input id="photo" type="file" v-on:change="upload" style="display: none;"/>
+      <v-btn icon class="mx-2 orange--text"><v-icon>mdi-message-text</v-icon></v-btn>
+      <v-btn icon class="orange--text"><label for="photo"><v-icon>mdi-message-image</v-icon></label></v-btn>
+      <v-btn class="ml-auto orange">投稿</v-btn>
+      <v-btn outlined class="mx-2 orange--text">キャンセル</v-btn>
     </div>
   </v-card>
 </v-overlay>
 </template>
 
 <script>
-import SearchWindow from '../TheHeader/TheHeaderSearchWindow/TheHeaderSearchWindow'
+import SearchWindow from './TheSearchWindow/TheSearchWindow'
 export default {
-  name: 'thepostview',
   components: {
     SearchWindow
   },
   data () {
     return {
-      components: ['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields']
+      photo_url: ''
+    }
+  },
+  methods: {
+    upload(event){
+      let files = event.target.files || event.dataTransfer.files;
+      let file = files[0]
+      let reader = new FileReader()
+      reader.onload = (e) => {
+        this.photo_url = e.target.result
+      }
+      reader.readAsDataURL(file)
     }
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.postform
-  padding 8pt 12pt
-  width 240pt
-  background-color #fff
-  color #707070
-
-  .case
-    display flex
-    align-items center
-
-    .option-buttoncase
-      flex-grow 1
-
-      .button
-        margin 0 4pt
-
-    .buttoncase
-      .button
-        margin 0 4pt
-</style>
