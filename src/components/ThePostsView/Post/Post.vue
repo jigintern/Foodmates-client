@@ -14,7 +14,7 @@
       <div class="case">
         <div class="case">
           <small class="posttime">{{ post.created_at }}</small>
-          <span class="user_name">{{ post.user_name }}</span>
+          <span class="user_name">{{ post.user_id }}</span>
         </div>
         <p class="content">
           {{ post.comment }}
@@ -31,6 +31,6 @@
 
 <script>
   export default {
-    props: ['post'],
+    props: ['post']
   }
 </script>

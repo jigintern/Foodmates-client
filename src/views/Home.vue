@@ -21,7 +21,7 @@ import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 
-const postURL = "http://localhost:8080/api/v1/posts/readall/"
+const postURL = "http://32bca9f3.ngrok.io/api/v1/posts/readall/"
 
 export default {
   components: {

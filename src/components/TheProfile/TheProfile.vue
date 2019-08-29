@@ -2,7 +2,7 @@
 <div class="profile">
   <div style="background-color:#F5DD64;width:120pt;height:120pt;border-radius:60pt"></div>
   <div class="case">
-    <h2 class="account-name">{{ account.name }}<v-btn outlined class="button orange--text" rounded>follow</v-btn></h2>
+    <h2 class="user_id">{{ account.updated_at }}<v-btn outlined class="button orange--text" rounded>follow</v-btn></h2>
     <small class="account-friendship">{{ account.following }} following {{ account.followed }} followed</small>
     <p class="account-comment">{{ account.comment }}</p>
     <div class="case">
@@ -12,6 +12,34 @@
   </div>
 </div>
 </template>
+
+<script>
+const ProfileURL = 'http://919dd9a2.ngrok.io/api/v1/users/1'
+
+export default {
+  components: {
+  },
+  data: {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*'
+    }
+  },
+  created () {
+    const self = this
+    this.$axios.get(ProfileURL, this.headers)
+      .then(res => {
+        console.log(res.data)
+        self.account = res.data
+      })
+  },
+  data () {
+    return {
+      account: []
+    }
+  }
+}
+</script>
 
 <style lang="stylus" scoped>
 .profile
@@ -54,22 +82,3 @@
           margin-right 4pt
 
 </style>
-
-<script>
-export default {
-  name: 'thepostview',
-  data: function () {
-    return {
-      account:
-        {
-          'name': 'watαno',
-          'following': 100,
-          'followed': 200,
-          'comment': 'NIT Ibaraki Collage 2I / Webアプリ制作、ゲーム制作等 / 好きなものを創って、好きな知識を仕入れて生きてます / jig.jp2019インターンer / 技術バイトでは画像処理をしています',
-          'birthday': '2001-01-01',
-          'address': '茨城県 ひたちなか市'
-        }
-    }
-  }
-}
-</script>

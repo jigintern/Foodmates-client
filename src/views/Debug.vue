@@ -2,6 +2,8 @@
   <div>
     <div>
       <TheHeader/>
+      <TheProfile />
+      <RecommendPerson />
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
@@ -20,15 +22,19 @@ import TheHeader from '../components/TheHeader/TheHeader'
 import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
+import TheProfile from '../components/TheProfile/TheProfile'
+import RecommendPerson from '../components/RecommendPerson'
 
-const postURL = "http://localhost:8080/api/v1/posts/readall/"
+const postURL = 'http://32bca9f3.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
     PostsView,
     PostModal,
     Post,
-    TheHeader
+    TheHeader,
+    TheProfile,
+    RecommendPerson
   },
   data: {
   info: {
@@ -41,8 +47,8 @@ export default {
   created() {
     const self = this
     this.$axios.get(postURL,this.headers)
+    console.log(res.data)
       .then(res => {
-        console.log(res.data)
         self.posts = res.data
       })
   },
