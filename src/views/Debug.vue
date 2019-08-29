@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      <TheHeader/>
+      <Header/>
+      <Profile />
       <RecommendedUsers />
       <v-container grid-list-xl>
         <v-layout row>
@@ -17,22 +18,22 @@
 
 <script>
 /* eslint-disable */
-import TheHeader from '../components/TheHeader/TheHeader'
+import Header from '../components/TheHeader/TheHeader'
 import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
-import TheProfile from '../components/TheProfile/TheProfile'
+import Profile from '../components/TheProfile/TheProfile'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
 
-const postURL = 'http://32bca9f3.ngrok.io/api/v1/posts/readall/'
+const postURL = 'http://c67b7623.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
     PostsView,
     PostModal,
     Post,
-    TheHeader,
-    TheProfile,
+    Header,
+    Profile,
     RecommendedUsers
   },
   data: {
