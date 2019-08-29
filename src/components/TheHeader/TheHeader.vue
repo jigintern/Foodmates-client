@@ -1,7 +1,7 @@
 <template>
   <v-toolbar class="orange">
     <v-icon>mdi-circle</v-icon>
-    <v-toolbar-title @click="reload">Foodmates</v-toolbar-title>
+    <v-toolbar-title @click="reload" style="cursor:pointer;">Foodmates</v-toolbar-title>
     <v-spacer/>
     <TheHeaderSearchWindow/>
   </v-toolbar>
