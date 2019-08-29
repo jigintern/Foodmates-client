@@ -11,10 +11,10 @@
       <v-avatar class="mr-4" style="">
         <img :src="post.user_icon_address">
       </v-avatar>
-      <div class="case">
-        <div class="case">
-          <small class="posttime">{{ post.created_at }}</small>
-          <span class="user_name">{{ post.user_id }}</span>
+      <div class="">
+        <div class="">
+          <small class="">{{ post.created_at }}</small>
+          <span class="">{{ post.user_id }}</span>
         </div>
         <p class="content">
           {{ post.comment }}

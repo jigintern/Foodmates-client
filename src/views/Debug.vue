@@ -2,8 +2,7 @@
   <div>
     <div>
       <TheHeader/>
-      <TheProfile />
-      <RecommendPerson />
+      <RecommendedUsers />
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
@@ -23,7 +22,7 @@ import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import TheProfile from '../components/TheProfile/TheProfile'
-import RecommendPerson from '../components/RecommendPerson'
+import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
 
 const postURL = 'http://32bca9f3.ngrok.io/api/v1/posts/readall/'
 
@@ -34,7 +33,7 @@ export default {
     Post,
     TheHeader,
     TheProfile,
-    RecommendPerson
+    RecommendedUsers
   },
   data: {
   info: {
