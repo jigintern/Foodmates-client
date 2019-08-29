@@ -1,10 +1,9 @@
 <template>
-  <v-toolbar class="orange">
+  <header class="d-flex align-center orange px-8 py-2">
     <v-icon>mdi-circle</v-icon>
-    <v-toolbar-title @click="reload" style="cursor:pointer;">Foodmates</v-toolbar-title>
-    <v-spacer/>
-    <TheHeaderSearchWindow/>
-  </v-toolbar>
+    <span @click="reload" style="cursor:pointer;">Foodmates</span>
+    <TheHeaderSearchWindow class="ml-auto mt-2" />
+  </header>
 </template>
 
 <script>
