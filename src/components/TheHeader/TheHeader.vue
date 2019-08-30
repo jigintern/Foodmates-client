@@ -7,23 +7,27 @@
 </template>
 
 <script>
-/* eslint-disable */
 import TheHeaderSearchWindow from './TheHeaderSearchWindow/TheHeaderSearchWindow'
 
 export default {
-  components:{
+  components: {
     TheHeaderSearchWindow
   },
-  data: function () {
+
+  data () {
     return {
       params: {
         text: ''
       }
     }
   },
+
   methods: {
-    reload: function () {
-      this.$router.go({path: this.$router.currentRoute.path, force: true})
+    reload () {
+      this.$router.go({
+        path: this.$router.currentRoute.path,
+        force: true
+      })
     }
   }
 }

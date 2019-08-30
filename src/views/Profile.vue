@@ -5,7 +5,7 @@
       <Profile />
       <v-container grid-list-xl>
         <v-layout row>
-          <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="`post-${post.dish_name}`">
+          <v-flex justify-center xs12 md6 lg4 v-for="(post, index) in posts" :key="`post-${index}`">
             <Post :post="post"/>
           </v-flex>
         </v-layout>
