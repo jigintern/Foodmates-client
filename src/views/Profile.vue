@@ -2,6 +2,7 @@
   <div>
     <div>
       <TheHeader/>
+      <Profile />
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
@@ -20,15 +21,17 @@ import TheHeader from '../components/TheHeader/TheHeader'
 import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
+import Profile from '../components/TheProfile/TheProfile'
 
-const postURL = "http://c67b7623.ngrok.io/api/v1/posts/readall/"
+const postURL = "http://86ab2198.ngrok.io/api/v1/posts/readall/"
 
 export default {
   components: {
     PostsView,
     PostModal,
     Post,
-    TheHeader
+    TheHeader,
+    Profile
   },
   data: {
   info: {

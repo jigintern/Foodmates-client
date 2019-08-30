@@ -1,6 +1,8 @@
 <template>
 <div class="d-flex flex-wrap justify-center px-4 py-8 white">
-  <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
+   <router-link to="/Profile">
+    <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
+  </router-link>
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">

@@ -9,7 +9,15 @@
     </header>
     <div class="d-flex pa-4">
       <v-avatar class="mr-4" style="">
-        <img :src="post.user_icon_address">
+
+
+<!--ここ！-->        <router-link tag="li" to="/">
+          <img :src="post.user_icon_address">
+          <a>/foo</a>
+        </router-link>
+
+
+
       </v-avatar>
       <div class="case">
         <div class="case">

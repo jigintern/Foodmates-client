@@ -1,13 +1,10 @@
 <template>
   <div>
     <div>
-<<<<<<< Updated upstream
       <Header/>
       <Profile />
       <RecommendedUsers />
-=======
       <TheHeader/>
->>>>>>> Stashed changes
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
@@ -26,34 +23,21 @@ import Header from '../components/TheHeader/TheHeader'
 import Post from '../components/ThePostsView/Post/Post'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
-<<<<<<< Updated upstream
 import Profile from '../components/TheProfile/TheProfile'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
+//import TheDataInput from '../components/TheDataInput/TheDataInput'
 
-const postURL = 'http://c67b7623.ngrok.io/api/v1/posts/readall/'
-=======
-import TheProfile from '../components/TheProfile/TheProfile'
-import RecommendPerson from '../components/RecommendPerson'
-import TheDataInput from '../components/TheDataInput/TheDataInput'
-
-const postURL = 'http://4bd22d48.ngrok.io/api/v1/posts/readall/'
->>>>>>> Stashed changes
+const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
     PostsView,
     PostModal,
     Post,
-<<<<<<< Updated upstream
     Header,
     Profile,
     RecommendedUsers
-=======
-    TheHeader,
-    TheProfile,
-    RecommendPerson,
-    TheDataInput
->>>>>>> Stashed changes
+    //TheDataInput
   },
   data: {
   info: {

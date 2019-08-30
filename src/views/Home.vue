@@ -14,7 +14,7 @@ import Profile from '../components/TheProfile/TheProfile'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 
-const postURL = "http://c67b7623.ngrok.io/api/v1/posts/readall/"
+const postURL = "http://86ab2198.ngrok.io/api/v1/posts/readall/"
 
 export default {
   components: {
