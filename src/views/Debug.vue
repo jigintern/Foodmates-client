@@ -4,7 +4,6 @@
       <Header/>
       <Profile />
       <RecommendedUsers />
-      <TheHeader/>
       <v-container grid-list-xl>
         <v-layout row>
           <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
@@ -13,7 +12,7 @@
         </v-layout>
       </v-container>
     </div>
-    <PostModal id="post-modal"/>
+    <PostModal />
   </div>
 </template>
 
@@ -37,7 +36,6 @@ export default {
     Header,
     Profile,
     RecommendedUsers
-    //TheDataInput
   },
   data: {
   info: {
