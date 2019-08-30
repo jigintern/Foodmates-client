@@ -19,6 +19,7 @@
 export default {
   data () {
     return {
+      select_dish: 'jig',
       suggests: [
         {
           'dish': 'jigカレー',
@@ -29,7 +30,7 @@ export default {
           'dish': 'jigカレー COMP入り',
           'restaurant': 'jig.jp',
           'address': '福井県 鯖江市'
-        },
+        }
       ]
     }
   }

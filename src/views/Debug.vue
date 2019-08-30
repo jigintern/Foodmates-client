@@ -12,7 +12,7 @@
         </v-layout>
       </v-container>
     </div>
-    <PostModal id="post-modal"/>
+    <PostModal />
   </div>
 </template>
 
