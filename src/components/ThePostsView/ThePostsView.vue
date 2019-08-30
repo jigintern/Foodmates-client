@@ -10,7 +10,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Post from './Post/Post'
 import PostWithPhoto from './Post/PostWithPhoto'
 
@@ -20,7 +19,7 @@ export default {
     PostWithPhoto
   },
   props: [
-      'posts'
-    ]
+    'posts'
+  ]
 }
 </script>

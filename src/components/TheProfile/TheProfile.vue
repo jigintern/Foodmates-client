@@ -1,6 +1,6 @@
 <template>
 <div class="d-flex flex-wrap justify-center px-4 py-8 white">
-   <router-link to="/Profile">
+  <router-link to="/Profile">
     <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
   </router-link>
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
@@ -24,14 +24,6 @@
 const ProfileURL = 'http://919dd9a2.ngrok.io/api/v1/users/1'
 
 export default {
-  components: {
-  },
-  data: {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*'
-    }
-  },
   created () {
     const self = this
     this.$axios.get(ProfileURL, this.headers)
@@ -40,9 +32,14 @@ export default {
         self.account = res.data
       })
   },
+
   data () {
     return {
-      account: []
+      account: [],
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*'
+      }
     }
   }
 }
