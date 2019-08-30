@@ -21,7 +21,7 @@
 </template>
 
 <script>
-const ProfileURL = 'http://919dd9a2.ngrok.io/api/v1/users/1'
+const ProfileURL = 'http://86ab2198.ngrok.io/api/v1/users/1'
 
 export default {
   created () {
