@@ -25,7 +25,7 @@ import PostModal from '../components/ThePostModal/ThePostModal'
 import Profile from '../components/TheProfile/TheProfile'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
 
-const postURL = 'http://c67b7623.ngrok.io/api/v1/posts/readall/'
+const postURL = 'http://4bd22d48.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
@@ -42,8 +42,8 @@ export default {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
     'Access-Control-Allow-Origin': '*',
-  }
-},
+    }
+  },
   created() {
     const self = this
     this.$axios.get(postURL,this.headers)
