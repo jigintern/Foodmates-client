@@ -17,45 +17,40 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Header from '../components/TheHeader/TheHeader'
 import Post from '../components/ThePostsView/Post/Post'
-import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import Profile from '../components/TheProfile/TheProfile'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
-//import TheDataInput from '../components/TheDataInput/TheDataInput'
 
 const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
-    PostsView,
     PostModal,
     Post,
     Header,
     Profile,
     RecommendedUsers
   },
-  data: {
-  info: {
-  },
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin': '*',
-    }
-  },
-  created() {
+
+  created () {
     const self = this
-    this.$axios.get(postURL,this.headers)
-    console.log(res.data)
+    this.$axios.get(postURL, this.headers)
       .then(res => {
+        console.log(res.data)
         self.posts = res.data
       })
   },
-  data() {
+
+  data () {
     return {
-      posts: []
+      posts: [],
+      info: {},
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*'
+      }
     }
   }
 }
