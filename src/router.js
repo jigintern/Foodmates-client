@@ -8,7 +8,7 @@ Vue.use(Router)
 
 const User = {
   template: '<div>User {{ $route.params.id }} </div>'
-  }
+}
 
 export default new Router({
   mode: 'history',
@@ -21,8 +21,9 @@ export default new Router({
       component: Home
     },
     {
-      path:'/user/:user_name',
-      name:'user_name',
+      // "http://localhost:8080/user/:user_name"
+      path: '/user/:user_name',
+      name: 'user_name',
       compornent: User
     },
     {
