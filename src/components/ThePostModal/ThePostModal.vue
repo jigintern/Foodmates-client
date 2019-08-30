@@ -2,8 +2,8 @@
 <v-overlay>
   <v-card class="pa-4" light width=360>
     <SearchWindow />
-    <div class="">
-      <img class="px-2 pb-4" :src="photo_url" height=80>
+    <div v-if="photo_url!=''">
+      <div class="px-2 mb-4" v-bind:style="{ backgroundImage: 'url(' + photo_url + ')' }" style="width:100%;height:80px;background-repeat:no-repeat;background-size:cover;background-position:center;" />
     </div>
     <div class="d-flex align-center">
       <input id="photo" type="file" v-on:change="upload" style="display: none;"/>
