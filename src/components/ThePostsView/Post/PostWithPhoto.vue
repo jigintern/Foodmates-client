@@ -16,7 +16,7 @@
         <img :src="post.user_icon_address">
       </v-avatar>
       <div class="d-flex flex-column">
-        <span class="" style="font-size:8px;">{{ post.posttime }}</span>
+        <span class="" style="font-size:8px;">{{ post.created_at }}</span>
         <span class="mb-2" style="font-size:16px;">{{ post.user_name }}</span>
         <p class="" style="font-size:12px;">
           {{ post.content }}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <Profile />
     <PostsView :posts="posts" />
     <!--<PostModal id="post-modal"/>-->

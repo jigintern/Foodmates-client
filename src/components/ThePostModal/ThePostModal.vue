@@ -1,23 +1,27 @@
 <template>
-<v-overlay>
-  <v-card class="pa-4" light width=360>
-    <SearchWindow />
-    <div class="">
-      <img class="px-2 pb-4" :src="photo_url" height=80>
-    </div>
-    <div class="d-flex align-center">
-      <input id="photo" type="file" v-on:change="upload" style="display: none;"/>
-      <v-btn icon class="mx-2 orange--text"><v-icon>mdi-message-text</v-icon></v-btn>
-      <v-btn icon class="orange--text"><label for="photo"><v-icon>mdi-message-image</v-icon></label></v-btn>
-      <v-btn class="ml-auto orange">投稿</v-btn>
-      <v-btn outlined class="mx-2 orange--text">キャンセル</v-btn>
-    </div>
-  </v-card>
-</v-overlay>
+  <v-overlay>
+    <v-card class="pa-4" light width=360>
+      <SearchWindow />
+      <div class="">
+        <img class="px-2 pb-4" :src="photo_url" height=80>
+      </div>
+      <div class="d-flex align-center">
+        <input id="photo" type="file" v-on:change="uploadimg" style="display: none;"/>
+        <v-btn icon class="mx-2 orange--text"><v-icon>mdi-message-text</v-icon></v-btn>
+        <v-btn icon class="orange--text"><label for="photo"><v-icon>mdi-message-image</v-icon></label></v-btn>
+        <v-btn class="ml-auto orange" @click="upload" type="submit">投稿</v-btn>
+        <v-btn outlined class="mx-2 orange--text">キャンセル</v-btn>
+      </div>
+    </v-card>
+  </v-overlay>
 </template>
 
 <script>
 import SearchWindow from './TheSearchWindow/TheSearchWindow'
+import axios from 'axios'
+
+const fileUploadUrl = 'http://'
+
 export default {
   components: {
     SearchWindow
@@ -28,7 +32,7 @@ export default {
     }
   },
   methods: {
-    upload(event){
+    uploadimg(event){
       let files = event.target.files || event.dataTransfer.files;
       let file = files[0]
       let reader = new FileReader()
@@ -36,6 +40,20 @@ export default {
         this.photo_url = e.target.result
       }
       reader.readAsDataURL(file)
+    },
+    upload:function(){
+      // FormData を利用して File を POST する
+      let formData = new FormData();
+      formData.append('yourFileKey', this.uploadFile);
+      let config = {
+        headers: {
+        'content-type': 'multipart/form-data'
+        }
+      };
+      axios
+      .post('yourUploadUrl')
+      .then(function(response) {})
+      .catch(function(error) {})
     }
   }
 }
