@@ -1,13 +1,23 @@
 <template>
   <v-app>
+    <the-header />
     <v-content>
-      <router-view />
+      <v-container>
+        <router-view />
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader/TheHeader'
+
 export default {
-  name: 'App'
+  components: {
+    TheHeader
+  },
+  data () {
+    return {}
+  }
 }
 </script>

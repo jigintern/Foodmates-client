@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Profile from './views/Profile.vue'
 import Debug from './views/Debug.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,12 @@ export default new Router({
       path: '/debug',
       name: 'debug',
       component: Debug
+    },
+    {
+      // "http://localhost:8080/Login"
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })

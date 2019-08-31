@@ -4,7 +4,7 @@
   </v-form>
 </template>
 
-<style scoped>
+<style>
 input::placeholder{
   color: orange;
 }
