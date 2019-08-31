@@ -4,7 +4,7 @@
       <v-layout justify-center>
         <v-flex xs6>
           <h1>Login</h1>
-          <v-text-field v-model="email" label="Email" @keyup.enter="onSubmit" />
+          <v-text-field v-model="id" label="ID" @keyup.enter="onSubmit" />
           <v-text-field
             v-model="password"
             label="Password"
@@ -32,7 +32,7 @@ export default {
 
   data () {
     return {
-      email: '',
+      id: '',
       password: '',
       password_show: false,
       error: null
@@ -45,11 +45,11 @@ export default {
         await this.$store.dispatch(
           'login',
           {
-            'email': this.email,
+            'id': this.id,
             'password': this.password
           }
         )
-        this.email = ''
+        this.id = ''
         this.password = ''
         this.error = null
         this.$router.push('/posts')
