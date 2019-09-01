@@ -23,8 +23,6 @@
 import SearchWindow from './TheSearchWindow/TheSearchWindow'
 import axios from 'axios'
 
-const fileUploadUrl = 'http://'
-
 export default {
   components: {
     SearchWindow,
@@ -48,15 +46,7 @@ export default {
     upload: function () {
       let formData = new FormData()
       formData.append('yourFileKey', this.uploadFile)
-      let config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      }
-      axios
-        .post('yourUploadUrl')
-        .then(function (response) {})
-        .catch(function (error) {})
+      axios.post('yourUploadUrl')
     }
   }
 }
