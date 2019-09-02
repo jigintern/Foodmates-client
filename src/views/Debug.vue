@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <div>
-      <Header/>
-      <Profile />
-      <RecommendedUsers />
-      <v-container grid-list-xl>
-        <v-layout row>
-          <v-flex justify-center xs12 md6 lg4 v-for="post in posts" :key="post.dish_name">
-            <Post :post="post"/>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </div>
+  <div style="width:100%;">
+    <Profile style="width:100%;" />
+    <RecommendedUsers />
+    <PostsView :posts="posts" />
     <PostModal />
   </div>
 </template>
+
+<style scoped>
+ .item{
+   width:calc(33.3% - 32px);
+ }
+@media (max-width: 640pt){
+    .item{
+      width:96%;
+    }
+}
+</style>
 
 <script>
 import Header from '../components/TheHeader/TheHeader'
@@ -22,18 +24,19 @@ import Post from '../components/ThePostsView/Post/Post'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import Profile from '../components/TheProfile/TheProfile'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
+import PostsView from '../components/ThePostsView/ThePostsView'
 
 const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
     PostModal,
-    Post,
     Header,
     Profile,
-    RecommendedUsers
+    RecommendedUsers,
+    PostsView
   },
-
+/*
   created () {
     const self = this
     this.$axios.get(postURL, this.headers)
@@ -41,11 +44,36 @@ export default {
         console.log(res.data)
         self.posts = res.data
       })
-  },
+  },*/
 
   data () {
     return {
-      posts: [],
+      posts: [
+        {
+          'comment': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+        {
+          'comment': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+        {
+          'comment': 'aaaa',
+        },
+      ],
       info: {},
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
