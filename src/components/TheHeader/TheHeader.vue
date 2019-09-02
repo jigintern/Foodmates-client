@@ -1,8 +1,16 @@
 <template>
-  <v-app-bar color="primary" absolute>
-    <the-header-logo />
+  <v-app-bar color="primary" app>
+    <v-flex xs3>
+      <v-toolbar-title>
+        <the-header-logo class="ml-4" />
+      </v-toolbar-title>
+    </v-flex>
     <v-spacer />
-    <the-header-search-window />
+    <v-flex xs5>
+      <v-toolbar-items>
+        <the-header-search-window />
+      </v-toolbar-items>
+    </v-flex>
   </v-app-bar>
 </template>
 
@@ -17,20 +25,7 @@ export default {
   },
 
   data () {
-    return {
-      params: {
-        text: ''
-      }
-    }
-  },
-
-  methods: {
-    reload () {
-      this.$router.go({
-        path: this.$router.currentRoute.path,
-        force: true
-      })
-    }
+    return {}
   }
 }
 </script>

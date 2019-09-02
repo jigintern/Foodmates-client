@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form">
+  <div class="login-form mt-5">
     <v-form @submit.prevent="onSubmit">
       <v-layout justify-center>
         <v-flex xs6>
