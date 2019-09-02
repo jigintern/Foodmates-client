@@ -1,13 +1,22 @@
 <template>
-  <v-container grid-list-xl>
-    <v-layout row>
-      <v-flex v-for="post in posts" :key="post.dish_name" justify-center xs12 md6 lg4>
+    <magic-grid maxColWidth="480">
+      <div v-for="post in posts" :key="post.dish_name" class="item">
         <Post v-if="post.image_address==''" :post="post"/>
         <PostWithPhoto v-else :post="post" />
-      </v-flex>
-    </v-layout>
-  </v-container>
+      </div>
+    </magic-grid>
 </template>
+
+<style scoped>
+ .item{
+   width:calc(33.3% - 32px);
+ }
+@media (max-width: 640pt){
+    .item{
+      width:96%;
+    }
+}
+</style>
 
 <script>
 import Post from './Post/Post'

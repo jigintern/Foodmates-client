@@ -1,5 +1,5 @@
 <template>
-  <v-card class="">
+  <v-card class="" style="width:100%;">
     <header class="d-flex align-center px-4 py-2 orange white--text">
       <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
       <div class="d-flex flex-column ml-auto">
@@ -9,14 +9,13 @@
     </header>
     <div class="d-flex pa-4">
       <v-avatar class="mr-4" style="">
+        <img :src="post.user_icon_address">
 
-
-<!--ここ！-->        <router-link tag="li" to="/">
-          <img :src="post.user_icon_address">
+<!--
+          <router-link tag="li" to="/">
           <a>/foo</a>
         </router-link>
-
-
+-->
 
       </v-avatar>
       <div class="case">
