@@ -7,9 +7,20 @@
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
         <span style="height:1.28em;font-size:32px;">{{ account.name }}</span>
-        <span class="" style="font-size:8px;">{{ account.following }} following {{ account.followed }} followed</span>
       </div>
-      <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn>
+      <!-- <div v-if="isFollowing==true"> -->
+        <v-btn @click="followToggle"
+               width="120"
+               :class="(isFollowing ? 'orange--text' : 'white--text') + ' ml-5'"
+               :color="(isFollowing ? 'white' : 'orange')"
+               :outlined="isFollowing"
+               depressed
+               rounded
+        >{{ isFollowing ? 'follow' : 'unfollow' }}</v-btn>
+      </div>
+      <!-- <div v-else>
+        <v-btn width="120" class="ml-8" color="primary" sm="12" depressed rounded>unfollow</v-btn>
+      </div> -->
     </div>
     <p class="" style="font-size:12px;">{{ account.comment }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
@@ -32,20 +43,34 @@ export default {
         self.account = res.data
       })
   },
-
   data () {
     return {
       account: [],
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
-      }
+      },
+      isFollowing: false
+    }
+  },
+  methods: {
+    followToggle (event) {
+      this.isFollowing = !this.isFollowing
+      //alert("isFollowing: " + this.isFollowing)
     }
   }
 }
 </script>
 
 <style lang="stylus">
+.push_button {
+  background-color: white;
+}
+
+.push_button.active {
+  background-color: red;
+}
+
 .profile
   display flex
   justify-content center

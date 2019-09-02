@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Profile />
+    <!--<Profile />-->
     <PostsView :posts="posts" />
+
   </div>
 </template>
 
