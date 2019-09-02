@@ -1,11 +1,8 @@
 <template>
-  <v-form>
-    <input placeholder="Search" class="white orange--text px-4" style="width:640px;height:32px;font-size:16px;border-radius:16px;outline:0;">
-  </v-form>
+  <v-flex d-flex fill-height>
+    <v-text-field height="48" class="search-form" outlined color="orange" append-icon="search" rounded single-line hide-details flat />
+  </v-flex>
 </template>
 
-<style>
-input::placeholder{
-  color: orange;
-}
+<style scoped>
 </style>
