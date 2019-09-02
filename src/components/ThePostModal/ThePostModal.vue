@@ -43,15 +43,23 @@ export default {
       reader.readAsDataURL(file)
     },
 
-    onSubmit() {
+    async onSubmit() {
       console.log("[ThePostModal.vue] onSubmit()")
       const content = {
         photoUrl: this.photoUrl,
         comment: this.comment,
         dishId: this.dishId
       }
-      console.log("this.content: " + content)
-      this.$emit('on_submit', content)
+      console.log("this.content" + content)
+      try {
+        await this.myServer.post(
+          '/posts/create',
+          { 'content': content },
+        )
+      } catch (e) {
+        console.log('post error')
+      }
+      this.$emit('on_submit')
       this.photoUrl = '',
       this.comment = '',
       this.dishId = 0

@@ -21,12 +21,10 @@
 </template>
 
 <script>
-const ProfileURL = 'http://86ab2198.ngrok.io/api/v1/users/1'
-
 export default {
   created () {
     const self = this
-    this.$axios.get(ProfileURL, this.headers)
+    this.myServer.get('/users/1', this.headers)
       .then(res => {
         console.log(res.data)
         self.account = res.data

@@ -39,21 +39,9 @@ export default {
   },
 
   methods: {
-    async postSubmit(content) {
+    async postSubmit() {
       console.log("[Home.vue] postSubmit()")
-      console.log("this.content" + content)
-      try {
-        await this.api.post(
-          'posts',
-          { 'content': content },
-        ).then(async () => {
-          await this.updatePosts()
-        })
-      } catch (e) {
-        console.log('post error')
-      } finally {
-        this.isPostFormActivated = false
-      }
+      this.isPostFormActivated = false
     },
 
     async updatePosts() {
@@ -61,18 +49,12 @@ export default {
       console.log("myServer: " + this.myServer)
       try {
         this.isUpdating = true
-        const newPosts = await this.myServer.get(
-          'posts/readall/',
-          { 
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
-            },
-            data: {}
-          }
-        ).then(res => res.data)
-        console.log("response: " + newPosts)
-        this.posts = newPosts
+        const self = this
+        await this.myServer.get('/posts/readall/', this.headers)
+          .then(res => {
+            console.log("response: " + res.data)
+            self.posts = res.data
+          })
         this.isUpdating = false
       } catch (e) {
         console.log(`update error: ${e}`)
@@ -83,12 +65,12 @@ export default {
   data () {
     return {
       posts: [],
+      isPostFormActivated: false,
+      isUpdating: false,
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
-      },
-      isPostFormActivated: false,
-      isUpdating: false
+      }
     }
   }
 }
