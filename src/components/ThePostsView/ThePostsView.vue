@@ -32,3 +32,11 @@ export default {
   ]
 }
 </script>
+
+<style scoped>
+span{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>

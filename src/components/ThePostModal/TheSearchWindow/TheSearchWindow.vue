@@ -1,14 +1,21 @@
 <template>
   <div>
-    <v-form>
-      <input v-model="keyword" placeholder="Search" class="grey lighten-4 px-4" style="width:100%;height:32px;font-size:16px;border-radius:16px;outline:0;">
-  </v-form>
-  <div class="mt-2 mb-4">
-    <div v-for="(suggest, index) in suggests" class="d-flex align-center px-6 py-1" :key="`suggest-${index}`">
-      <span class="" style="font-size:14.4px;">{{ suggest.dish }}</span>
+    <v-card v-if="select_dish!=0" class="d-flex align-center px-6 py-1 mb-2" @click="select_dish=0" style="cursor:pointer;">
+      <span class="" style="width:160px;font-size:14.4px;">{{ select_dish.dish_name }}</span>
       <div class="d-flex flex-column ml-auto">
-        <span class="" style="font-size:12px;">{{ suggest.restaurant }}</span>
-        <span class="" style="font-size:8px;">{{ suggest.address }}</span>
+        <span class="" style="width:80px;font-size:12px;">{{ select_dish.store_name }}</span>
+        <span class="" style="width:80px;font-size:8px;">茨城県 ひたちなか市</span>
+      </div>
+    </v-card>
+   <v-form v-if="select_dish==0">
+     <input v-model="keyword" placeholder="Search" class="grey lighten-4 px-4" style="width:100%;height:32px;font-size:16px;border-radius:16px;outline:0;">
+  </v-form>
+  <div v-if="select_dish==0" class="mt-2 mb-4">
+    <div v-for="suggest in suggests()" class="d-flex align-center px-6 py-1" @click="select_dish=suggest" style="cursor:pointer;">
+      <span class="" style="width:160px;font-size:14.4px;">{{ suggest.dish_name }}</span>
+      <div class="d-flex flex-column ml-auto">
+        <span class="" style="width:80px;font-size:12px;">{{ suggest.store_name }}</span>
+        <span class="" style="width:80px;font-size:8px;">茨城県 ひたちなか市</span>
       </div>
     </div>
   </div>
@@ -16,22 +23,48 @@
 </template>
 
 <script>
+const dishURL = 'http://6ed9c264.ngrok.io/api/v1/dishes/readall/'
 export default {
-  data () {
+  data: {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
+    }
+  },
+  created() {
+    this.$axios.get(dishURL,this.headers)
+      .then(res => {
+        this.dishes = res.data
+      })
+  },
+  data() {
     return {
-      select_dish: 'jig',
-      suggests: [
-        {
-          'dish': 'jigカレー',
-          'restaurant': 'jig.jp',
-          'address': '福井県 鯖江市'
-        },
-        {
-          'dish': 'jigカレー COMP入り',
-          'restaurant': 'jig.jp',
-          'address': '福井県 鯖江市'
+      select_dish: 0,
+      dishes: [],
+      keyword: ''
+    }
+  },
+  methods: {
+    suggests: function(){
+      let keys = this.keyword.split(' ');
+      if(keys[0]=='')
+        return []
+      
+      let suggests = this.dishes.filter(
+        function(dish){
+          let f=true
+          for(let k of keys){
+            if(
+              !(dish.dish_name.indexOf(k)>=0) &&
+              !(dish.store_name.indexOf(k)>=0)
+            )
+            f=false
+          }
+          return f
         }
-      ]
+      )
+      
+      return suggests
     }
   }
 }

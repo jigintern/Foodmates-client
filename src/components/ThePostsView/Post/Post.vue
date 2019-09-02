@@ -1,7 +1,7 @@
 <template>
   <v-card class="" style="width:100%;">
     <header class="d-flex align-center px-4 py-2 orange white--text">
-      <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
+      <span class="" style="width:240px;font-size:16px;">{{ post.dish_name }}</span>
       <div class="d-flex flex-column ml-auto">
         <span class="" style="font-size:12px;">{{ post.restaurant_name }}</span>
         <span class="" style="font-size:8px;">{{ post.restaurant_place }}</span>
@@ -18,13 +18,11 @@
 -->
 
       </v-avatar>
-      <div class="case">
-        <div class="case">
-          <small class="posttime">{{ post.created_at }}</small>
-          <span class="user_name">{{ post.user_name }}</span>
-        </div>
-        <p class="content">
-          {{ post.comment }}
+      <div class="d-flex flex-column">
+        <span class="" style="font-size:8px;">{{ post.created_at }}</span>
+        <span class="mb-2" style="font-size:16px;">{{ post.user_name }}</span>
+        <p class="" style="font-size:12px;">
+          {{ post.content }}
         </p>
       </div>
     </div>
@@ -41,3 +39,11 @@
     props: ['post']
   }
 </script>
+
+<style scoped>
+span{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>

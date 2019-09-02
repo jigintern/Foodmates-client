@@ -1,20 +1,20 @@
 <template>
   <div>
-    <Profile />
     <PostsView :posts="posts" />
+    <PostModal />
   </div>
 </template>
 
 <script>
-import Profile from '../components/TheProfile/TheProfile'
 import PostsView from '../components/ThePostsView/ThePostsView'
+import PostModal from '../components/ThePostModal/ThePostModal'
 
-const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
+const postURL = 'http://6ed9c264.ngrok.io/api/v1/posts/readall/'
 
 export default {
   components: {
     PostsView,
-    Profile
+    PostModal
   },
 
   created () {
