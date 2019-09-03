@@ -75,9 +75,12 @@ export default {
 
   methods: {
     async addPost () {
+      console.log("addpost(): ", this.postImage)
+      const params = new FormData()
+      params.append('file', this.postImage)
       await this.myServer.post(
         '/upload/',
-        this.postImage,
+        params,
         { headers: { 'content-type': 'multipart/form-data' }}
       ).then(res => {
         console.log('画像を投稿しました: ' + res.data)
@@ -136,8 +139,8 @@ export default {
     async onSubmit() {
       console.log("[ThePostModal.vue] onSubmit()")
       
-      if (!this.uploadedImageForView || !this.postImage) {
-        this.addPost()
+      if (this.uploadedImageForView && this.postImage) {
+        await this.addPost()
       }
 
       const content = {
