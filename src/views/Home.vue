@@ -21,14 +21,12 @@
 </template>
 
 <script>
-import Profile from '../components/TheProfile/TheProfile'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
 
 export default {
   components: {
-    Profile,
     PostsView,
     PostModal,
     RecommendedUsers

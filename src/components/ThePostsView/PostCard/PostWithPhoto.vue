@@ -4,7 +4,7 @@
     </header>
     <div class="d-flex align-end" style="background:brown;height:120pt;">
       <div class="d-flex align-center px-4 py-2 white--text" style="width:100%;">
-        <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
+        <span class="" style="width:240px;font-size:16px;">{{ post.dish_name }}</span>
         <div class="d-flex flex-column ml-auto">
           <span class="" style="font-size:12px;">{{ post.restaurant_name }}</span>
           <span class="" style="font-size:8px;">{{ post.restaurant_place }}</span>
@@ -36,3 +36,11 @@
     props: ['post'],
   }
 </script>
+
+<style scoped>
+span{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>

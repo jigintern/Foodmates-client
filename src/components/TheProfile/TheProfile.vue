@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .profile
   display flex
   justify-content center

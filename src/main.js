@@ -5,10 +5,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from './plugins/axios.js'
+import MagicGrid from 'vue-magic-grid'
 
 Vue.config.productionTip = false
 
 // Vue.prototype.$axios = axios
+
+Vue.use(MagicGrid)
 
 new Vue({
   router,
