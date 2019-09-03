@@ -8,7 +8,8 @@
       <div class="d-flex flex-column">
         <span style="height:1.28em;font-size:32px;">{{ account.user_name }}</span>
       </div>
-      <FollowButton />
+      <div v-if="account.id!='2'">
+        <FollowButton />
       </div>
     </div>
     <p class="" style="font-size:12px;">{{ account.biography }}</p>
@@ -23,7 +24,7 @@
 <script>
 import FollowButton from '../FollowButton/FollowButton'
 
-const ProfileURL = 'http://6ed9c264.ngrok.io/api/v1/users/1'
+const ProfileURL = 'http://t2.intern.jigd.info/api/v1/users/1'
 
 export default {
   components: {
@@ -49,7 +50,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
 <style lang="stylus">
 .push_button {
   background-color: white;
@@ -59,9 +59,6 @@ export default {
   background-color: red;
 }
 
-=======
-<style lang="stylus" scoped>
->>>>>>> 6097a2b7e143fe4aad9aca842732887734dba706
 .profile
   display flex
   justify-content center
