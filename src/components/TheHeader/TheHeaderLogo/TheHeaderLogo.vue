@@ -1,6 +1,6 @@
 <template>
   <div class="header-logo">
-      <img src="/img/logotype.png" @click="reload" style="height:32px;cursor:pointer;">
+      <img src="/img/logotype.png" @click="reload" class="mt-2" style="height:64px;cursor:pointer;">
   </div>
 </template>
 
