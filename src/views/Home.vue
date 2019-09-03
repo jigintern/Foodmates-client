@@ -7,7 +7,7 @@
     <profile />
     <recommended-users />
     <posts-view :posts="posts" />
-    <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;" @click="isPostFormActivated = true">
+    <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;background-color:white;" @click="isPostFormActivated = true">
       <v-icon size="64">mdi-pencil-circle</v-icon>
     </v-btn>
     <v-dialog
@@ -15,7 +15,7 @@
       width="360"
       z-index="10"
     >
-      <post-modal @post_submit="postSubmit" />
+      <post-modal @on_submit="postSubmit" @on_cancel="postCancel" />
     </v-dialog>
   </div>
 </template>
@@ -46,19 +46,23 @@ export default {
 
     async updatePosts() {
       console.log("[Home.vue] updatePosts()")
-      console.log("myServer: " + this.myServer)
       try {
         this.isUpdating = true
         const self = this
         await this.myServer.get('/posts/readall/', this.headers)
           .then(res => {
-            console.log("response: " + res.data)
+            console.log("response: " + JSON.stringify(res.data))
             self.posts = res.data
           })
         this.isUpdating = false
       } catch (e) {
         console.log(`update error: ${e}`)
       }
+    },
+
+    postCancel() {
+      console.log("[Home.vue] postCancel()")
+      this.isPostFormActivated = false
     }
   },
 

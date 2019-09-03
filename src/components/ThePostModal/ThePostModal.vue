@@ -2,15 +2,13 @@
 <div>
   <v-card class="pa-4" light width=360>
     <search-window />
-    <div v-if="photoUrl!=''">
-      <div class="px-2 mb-4" v-bind:style="{ backgroundImage: 'url(' + photoUrl + ')' }" style="width:100%;height:80px;background-repeat:no-repeat;background-size:cover;background-position:center;" />
-    </div>
     <div class="d-flex align-center">
       <input id="photo" type="file" v-on:change="uploadPhoto" style="display: none;"/>
+
       <v-btn icon class="mx-2 orange--text"><v-icon>mdi-message-text</v-icon></v-btn>
       <v-btn icon class="orange--text"><label for="photo"><v-icon>mdi-message-image</v-icon></label></v-btn>
-      <v-btn class="ml-auto orange" @click="onSubmit" type="submit">投稿</v-btn>
-      <v-btn outlined class="mx-2 orange--text" @click="overlay=false">キャンセル</v-btn>
+      <v-btn color="orange" type="submit" @click="onSubmit">投稿</v-btn>
+      <v-btn outlined class="mx-2 orange--text" @click="onCancel">キャンセル</v-btn>
     </div>
   </v-card>
 </div>
@@ -27,7 +25,10 @@ export default {
     return {
       photoUrl: '',
       comment: '',
-      dishId: 0
+      dishId: 0,
+      headers: {
+        'Content-Type':'application/x-www-form-urlencoded',
+      }
     }
   },
   methods: {
@@ -52,9 +53,26 @@ export default {
       }
       console.log("this.content" + content)
       try {
+        /*
         await this.myServer.post(
           '/posts/create',
-          { 'content': content },
+          {
+            "user_id": 1,
+            "dish_id": this.dishID,
+            "comment": this.comment,
+            "image_address": this.photoUrl
+          },
+        )
+        */
+        await this.myServer.post(
+          '/posts/create/',
+          {
+            "user_id": 1,
+            "dish_id": this.dishId,
+            "comment": this.comment,
+            "image_address": this.photoUrl
+          },
+          { headers: this.headers }
         )
       } catch (e) {
         console.log('post error')
@@ -63,6 +81,11 @@ export default {
       this.photoUrl = '',
       this.comment = '',
       this.dishId = 0
+    },
+
+    async onCancel() {
+      console.log("[ThePostModal.vue] onCancel()")
+      this.$emit('on_cancel')
     }
   }
 }
