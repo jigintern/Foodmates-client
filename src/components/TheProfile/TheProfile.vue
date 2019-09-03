@@ -31,7 +31,7 @@ export default {
   },
   created () {
     const self = this
-    this.$axios.get(ProfileURL, this.headers)
+    this.myServer.get('/users/1', this.headers)
       .then(res => {
         console.log(res.data)
         self.account = res.data
@@ -49,6 +49,7 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style lang="stylus">
 .push_button {
   background-color: white;
@@ -58,6 +59,9 @@ export default {
   background-color: red;
 }
 
+=======
+<style lang="stylus" scoped>
+>>>>>>> 6097a2b7e143fe4aad9aca842732887734dba706
 .profile
   display flex
   justify-content center

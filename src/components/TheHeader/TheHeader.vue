@@ -1,16 +1,11 @@
 <template>
   <v-app-bar color="primary" app>
-    <v-flex xs3>
-      <v-toolbar-title>
-        <the-header-logo class="ml-4" />
-      </v-toolbar-title>
-    </v-flex>
-    <v-spacer />
-    <v-flex xs5>
-      <v-toolbar-items>
-        <the-header-search-window />
-      </v-toolbar-items>
-    </v-flex>
+    <v-toolbar-title>
+      <the-header-logo />
+    </v-toolbar-title>
+    <v-toolbar-items class="ml-auto" style="width:52%;">
+      <the-header-search-window style="width:100%;" />
+    </v-toolbar-items>
   </v-app-bar>
 </template>
 

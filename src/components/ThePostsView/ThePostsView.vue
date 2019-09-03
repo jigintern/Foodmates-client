@@ -1,25 +1,38 @@
 <template>
-  <v-container grid-list-xl>
-    <v-layout row>
-      <v-flex v-for="post in posts" :key="post.dish_name" justify-center xs12 md6 lg4>
-        <Post v-if="post.image_address==''" :post="post"/>
-        <PostWithPhoto v-else :post="post" />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout wrap>
+    <v-flex xs4 v-for="(post,index) in posts" :key="`post-${index}`" class="pa-3">
+      <post-card :post="post"/>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-import Post from './Post/Post'
-import PostWithPhoto from './Post/PostWithPhoto'
+import PostCard from './PostCard/PostCard'
 
 export default {
-  components: {
-    Post,
-    PostWithPhoto
-  },
   props: [
     'posts'
-  ]
+  ],
+  components: {
+    PostCard
+  }
 }
 </script>
+
+<style scoped>
+span{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item {
+  width:calc(33.3% - 32px);
+}
+
+@media (max-width: 640pt) {
+  .item {
+    width:96%;
+  }
+}
+</style>
