@@ -1,53 +1,44 @@
 <template>
   <div>
     <v-card v-if="select_dish!=0" class="d-flex align-center px-6 py-1 mb-2" @click="select_dish=0" style="cursor:pointer;">
-      <span class="" style="width:160px;font-size:14.4px;">{{ select_dish.dish_name }}</span>
-      <div class="d-flex flex-column ml-auto">
-        <span class="" style="width:80px;font-size:12px;">{{ select_dish.store_name }}</span>
-        <span class="" style="width:80px;font-size:8px;">茨城県 ひたちなか市</span>
+      <div class="suggest-info">
+        <h2 class="body-1 suggest-info">{{ select_dish.dish_name }}</h2>
+        <h5 class="caption grey--text suggest-info">{{ select_dish.store_name }} , 茨城県, ひたちなか市</h5>
       </div>
     </v-card>
     <v-text-field v-model="keyword" outlined rounded single-line hide-details flat append-icon="search"/>
     <div v-if="select_dish==0" class="mt-2 mb-4">
       <div
         v-for="(suggest, index) in suggests()"
-        class="d-flex align-center px-6 py-1"
         @click="select_dish=suggest"
-        style="cursor:pointer;"
         :key="`suggest-${index}`"
+        style="cursor: pointer;"
+        class="my-2"
       >
-        <span class="" style="width:160px;font-size:14.4px;">{{ suggest.dish_name }}</span>
-        <div class="d-flex flex-column ml-auto">
-          <span class="" style="width:80px;font-size:12px;">{{ suggest.store_name }}</span>
-          <span class="" style="width:80px;font-size:8px;">茨城県 ひたちなか市</span>
-        </div>
+        <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
+        <h5 class="caption grey--text suggest-info">{{ suggest.store_name }} , 茨城県, ひたちなか市</h5>
+        <v-divider class="mt-2" color="grey" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-const dishURL = 'http://6ed9c264.ngrok.io/api/v1/dishes/readall/'
 export default {
-  data: {
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-    }
-  },
-
   created() {
-    this.$axios.get(dishURL,this.headers)
-      .then(res => {
-        this.dishes = res.data
-      })
+    const self = this
+    this.myServer.get('/dishes/readall/', this.headers)
+      .then(res => {self.dishes = res.data})
   },
 
   data() {
     return {
       select_dish: 0,
       dishes: [],
-      keyword: ''
+      keyword: '',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
     }
   },
 
@@ -67,3 +58,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.suggest-info {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+</style>

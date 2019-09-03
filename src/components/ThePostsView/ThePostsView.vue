@@ -1,9 +1,9 @@
 <template>
-  <magic-grid maxColWidth="480">
-    <div v-for="post in posts" :key="post.dish_name" class="item">
+  <v-layout wrap>
+    <v-flex xs4 v-for="(post,index) in posts" :key="`post-${index}`" class="pa-3">
       <post-card :post="post"/>
-    </div>
-  </magic-grid>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>

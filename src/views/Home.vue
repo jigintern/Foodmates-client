@@ -24,12 +24,14 @@
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
+import Profile from '../components/TheProfile/TheProfile'
 
 export default {
   components: {
     PostsView,
     PostModal,
-    RecommendedUsers
+    RecommendedUsers,
+    Profile
   },
 
   async created () {
@@ -40,6 +42,7 @@ export default {
     async postSubmit() {
       console.log("[Home.vue] postSubmit()")
       this.isPostFormActivated = false
+      await this.updatePosts()
     },
 
     async updatePosts() {
