@@ -6,7 +6,7 @@
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ account.name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ account.user_name }}</span>
       </div>
       <!-- <div v-if="isFollowing==true"> -->
         <v-btn @click="followToggle"
@@ -16,23 +16,23 @@
                :outlined="isFollowing"
                depressed
                rounded
-        >{{ isFollowing ? 'follow' : 'unfollow' }}</v-btn>
+        >{{ isFollowing ? 'follow' : 'following' }}</v-btn>
       </div>
       <!-- <div v-else>
         <v-btn width="120" class="ml-8" color="primary" sm="12" depressed rounded>unfollow</v-btn>
       </div> -->
     </div>
-    <p class="" style="font-size:12px;">{{ account.comment }}</p>
+    <p class="" style="font-size:12px;">{{ account.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ account.birthday }}</span>
-      <v-icon class="figure mr-2" small>mdi-home-city</v-icon><span class="mr-8">{{ account.address }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ account.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-home-city</v-icon><span class="mr-8">{{ account.prefecture }}</span>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-const ProfileURL = 'http://86ab2198.ngrok.io/api/v1/users/1'
+const ProfileURL = 'http://6ed9c264.ngrok.io/api/v1/users/1'
 
 export default {
   created () {
@@ -56,7 +56,7 @@ export default {
   methods: {
     followToggle (event) {
       this.isFollowing = !this.isFollowing
-      //alert("isFollowing: " + this.isFollowing)
+      alert("isFollowing: " + this.isFollowing)
     }
   }
 }
