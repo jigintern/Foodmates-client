@@ -8,19 +8,8 @@
       <div class="d-flex flex-column">
         <span style="height:1.28em;font-size:32px;">{{ account.user_name }}</span>
       </div>
-      <!-- <div v-if="isFollowing==true"> -->
-        <v-btn @click="followToggle"
-               width="120"
-               :class="(isFollowing ? 'orange--text' : 'white--text') + ' ml-5'"
-               :color="(isFollowing ? 'white' : 'orange')"
-               :outlined="isFollowing"
-               depressed
-               rounded
-        >{{ isFollowing ? 'follow' : 'following' }}</v-btn>
+      <FollowButton />
       </div>
-      <!-- <div v-else>
-        <v-btn width="120" class="ml-8" color="primary" sm="12" depressed rounded>unfollow</v-btn>
-      </div> -->
     </div>
     <p class="" style="font-size:12px;">{{ account.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
@@ -32,9 +21,14 @@
 </template>
 
 <script>
+import FollowButton from '../FollowButton/FollowButton'
+
 const ProfileURL = 'http://6ed9c264.ngrok.io/api/v1/users/1'
 
 export default {
+  components: {
+    FollowButton
+  },
   created () {
     const self = this
     this.$axios.get(ProfileURL, this.headers)
@@ -50,15 +44,8 @@ export default {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
       },
-      isFollowing: false
     }
   },
-  methods: {
-    followToggle (event) {
-      this.isFollowing = !this.isFollowing
-      alert("isFollowing: " + this.isFollowing)
-    }
-  }
 }
 </script>
 
