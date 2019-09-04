@@ -20,8 +20,6 @@ import TheHeader from '../components/TheHeader/TheHeader'
 import PostCard from '../components/ThePostsView/PostCard/PostCard'
 import Profile from '../components/TheProfile/TheProfile'
 
-const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
-
 export default {
   components: {
     PostCard,

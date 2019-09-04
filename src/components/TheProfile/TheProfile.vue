@@ -6,22 +6,30 @@
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ account.name }}</span>
-        <span class="" style="font-size:8px;">{{ account.following }} following {{ account.followed }} followed</span>
+        <span style="height:1.28em;font-size:32px;">{{ account.user_name }}</span>
       </div>
-      <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn>
+      <div v-if="account.id!='2'">
+        <FollowButton />
+      </div>
     </div>
-    <p class="" style="font-size:12px;">{{ account.comment }}</p>
+    <p class="" style="font-size:12px;">{{ account.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ account.birthday }}</span>
-      <v-icon class="figure mr-2" small>mdi-home-city</v-icon><span class="mr-8">{{ account.address }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ account.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-home-city</v-icon><span class="mr-8">{{ account.prefecture }}</span>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import FollowButton from '../FollowButton/FollowButton'
+
+const ProfileURL = 'http://t2.intern.jigd.info/api/v1/users/1'
+
 export default {
+  components: {
+    FollowButton
+  },
   created () {
     const self = this
     this.myServer.get('/users/1', this.headers)
@@ -30,7 +38,6 @@ export default {
         self.account = res.data
       })
   },
-
   data () {
     return {
       account: [],
@@ -43,7 +50,15 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+.push_button {
+  background-color: white;
+}
+
+.push_button.active {
+  background-color: red;
+}
+
 .profile
   display flex
   justify-content center
