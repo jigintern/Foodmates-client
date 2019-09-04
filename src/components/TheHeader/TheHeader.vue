@@ -1,13 +1,23 @@
 <template>
-  <v-app-bar color="primary" app>
-    <v-toolbar-title>
-      <the-header-logo />
-    </v-toolbar-title>
-    <v-toolbar-items class="ml-auto" style="width:52%;">
-      <the-header-search-window style="width:100%;" />
-    </v-toolbar-items>
+  <v-app-bar class="header" app color="primary">
+      <v-toolbar-title>
+        <the-header-logo />
+      </v-toolbar-title>
+      <v-toolbar-items class="search-bar ml-auto">
+        <the-header-search-window class="" />
+      </v-toolbar-items>
   </v-app-bar>
 </template>
+
+<style lang="stylus" scoped>
+.header
+  padding: 4px 4%
+
+@media (min-width: 1680px)
+  .header
+    padding: 4px calc(50% - 800px)
+
+</style>
 
 <script>
 import TheHeaderSearchWindow from './TheHeaderSearchWindow/TheHeaderSearchWindow'

@@ -21,3 +21,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+body
+  min-width: 320px
+</style>

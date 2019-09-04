@@ -1,6 +1,6 @@
 <template>
-  <div class="header-logo">
-      <img src="/img/logotype.png" @click="reload" class="mt-2" style="height:64px;cursor:pointer;">
+  <div>
+      <img src="/img/logotype.png" @click="reload" class="header-logo mt-2">
   </div>
 </template>
 
@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+.header-logo
+  height: 64px
+  cursor: pointer
 </style>
