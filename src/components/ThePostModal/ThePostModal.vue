@@ -67,6 +67,7 @@ export default {
       postImage: null,
       comment: '',
       selectedDish: null,
+      uploadFileName: '',
       headers: {
         'Content-Type':'application/x-www-form-urlencoded',
       }
@@ -75,15 +76,19 @@ export default {
 
   methods: {
     async addPost () {
+      if (!this.postImage) return
+
       console.log("addpost(): ", this.postImage)
+      const self = this
       const params = new FormData()
       params.append('file', this.postImage)
-      await this.myServer.post(
+      return await this.myServer.post(
         '/upload/',
         params,
         { headers: { 'content-type': 'multipart/form-data' }}
       ).then(res => {
-        console.log('画像を投稿しました: ' + res.data)
+        const resObj = JSON.parse(res.data)
+        self.uploadFileName = resObj.file_name
       }).catch(function (error) {
         console.log(error)
       })
@@ -138,26 +143,24 @@ export default {
 
     async onSubmit() {
       console.log("[ThePostModal.vue] onSubmit()")
-      
-      if (this.uploadedImageForView && this.postImage) {
-        await this.addPost()
-      }
+      const self = this
+      await this.addPost()
+        .then(() => {
+          const content = {
+            "user_id": 1,
+            "dish_id": self.selectedDish.id,
+            "comment": self.comment,
+            "image_address": self.uploadFileName
+          }
+          console.log('send content: ' + JSON.stringify(content))
+          console.log('imageAddr: ' + self.uploadFileName)
+          self.myServer.post(
+            '/posts/create/',
+            content,
+            { headers: this.headers }
+          )
+        })
 
-      const content = {
-        "UserId": 1,
-        "DishId": this.selectDish.Id,
-        "Comment": this.comment
-      }
-      console.log('send content: ' + content)
-      try {
-        await this.myServer.post(
-          '/posts/create/',
-          content,
-          { headers: this.headers }
-        )
-      } catch (e) {
-        console.log('post error')
-      }
       this.$emit('on_submit')
       this.postImage = null
       this.uploadedImageForView = null
@@ -171,6 +174,7 @@ export default {
     },
 
     selectDish(dish) {
+      console.log("TPM: select_dish: ", dish)
       this.selectedDish = dish
     }
   }

@@ -48,6 +48,7 @@ export default {
     },
 
     selectDish (dish) {
+      console.log("TSW: select_dish: ", dish)
       this.$emit('select_dish', dish)
     }
   }

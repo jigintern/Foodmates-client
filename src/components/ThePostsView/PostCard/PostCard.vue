@@ -3,9 +3,9 @@
     <v-col class="px-3">
 
       <v-row v-if="post.image_address">
-        <v-img :src="`img/IMG_5470.JPG`" width="100%" class="pa-2">
+        <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image pa-2">
           <v-row align="end" class="fill-height">
-            <v-sheet tile color="rgba(0, 0, 0, .5)" class="lightbox white--text pa-2">
+            <v-sheet tile color="rgba(0, 0, 0, .5)" class="lightbox white--text pa-2" width="100%">
               <span class="caption">{{ post.restaurant_name }}</span>
               <span class="body-1 font-weight-black">{{ post.dish_name }}</span>
             </v-sheet>
@@ -55,7 +55,13 @@ export default {
 .row {
   padding: 0 0;
 }
+
 .col {
   padding: 0 0;
+}
+
+.post-image {
+  max-height: 300px;
+  justify-content: center;
 }
 </style>

@@ -20,9 +20,6 @@
     >
       <v-icon size="64">mdi-pencil-circle</v-icon>
     </v-btn>
-    <!-- <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;background-color:white;" @click="isPostFormActivated = true">
-      <v-icon size="64">mdi-pencil-circle</v-icon>
-    </v-btn> -->
     <v-dialog
       v-model="isPostFormActivated"
       width="360"
