@@ -5,6 +5,7 @@
     </v-toolbar-title>
     <v-toolbar-items class="ml-auto">
       <the-header-search-window />
+      <the-header-user-card :user="authUser" style="display:none;" />
     </v-toolbar-items>
   </v-app-bar>
 </template>
