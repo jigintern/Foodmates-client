@@ -1,26 +1,39 @@
 <template>
-  <v-btn @click="followToggle"
-         width="120"
-         :class="(isFollowing ? 'orange--text' : 'white--text') + ' ml-5'"
-         :color="(isFollowing ? 'white' : 'orange')"
-         :outlined="isFollowing"
-         depressed
-         rounded
-  >{{ isFollowing ? 'follow' : 'following' }}</v-btn>
+  <div>
+    <v-btn @click="followToggle"
+           width="120"
+           :class="(isFollowing ? 'white--text' : 'orange--text') + ' ml-5'"
+           :color="(isFollowing ? 'orange' : 'white')"
+           :outlined="!isFollowing"
+           depressed
+           rounded
+    >{{ isFollowing ? 'following' : 'follow' }}</v-btn>
+</div>
 </template>
 
 <script>
 export default {
+
+  created () {
+    this.myServer.post('/friendships/isfollowing/', {
+      "UserId":7,
+      "FollowId":5
+    },{ headers: this.headers }
+      ).then(res => {
+        console.log(res.data)
+        console.log(typeof(res.data))
+        this.isFollowing = res.data.following
+      })
+  },
+
   data () {
     return {
-      isFollowing: false,
-      headers: {
-        'Content-Type':'application/x-www-form-urlencoded'
-      }
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      isFollowing: true
     }
   },
   methods: {
-    followToggle (event) {
+    followToggle () {
       this.isFollowing = !this.isFollowing
       this.myServer.post(
         '/friendships/isfollowing/',
@@ -40,8 +53,10 @@ export default {
               "FollowId":5
             },
             { headers: this.headers }
-          )
-          console.log(res.data + "ですとろーい!")
+          ).then(res => {
+            console.log(res.data + "ですとろーい!")
+            this.isFollowing = false
+          })
         }else{
           this.myServer.post(
             '/friendships/create/',
@@ -50,8 +65,10 @@ export default {
               "FollowId":5
             },
             { headers: this.headers }
-          )
-          console.log("くりえいと！")
+          ).then(() => {
+            this.isFollowing = true
+            console.log("くりえいと！")
+          })
         }
       })
     }
