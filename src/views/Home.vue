@@ -4,8 +4,7 @@
       更新
     </v-btn>
     <v-progress-circular v-if="isUpdating" indeterminate color="primary" />
-    <profile />
-    <recommended-users />
+    <recommended-users :recommendedUsersID="recommendedUsers" />
     <posts-view :posts="posts" />
     <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;background-color:white;" @click="isPostFormActivated = true">
       <v-icon size="64">mdi-pencil-circle</v-icon>
@@ -36,6 +35,7 @@ export default {
 
   async created () {
     await this.updatePosts()
+    await this.getRecommendedUsers()
   },
 
   methods: {
@@ -64,12 +64,28 @@ export default {
     postCancel() {
       console.log("[Home.vue] postCancel()")
       this.isPostFormActivated = false
+    },
+
+    async getRecommendedUsers() {
+      console.log("[Home.vue] getReccommendedUsers()")
+      try {
+        const self = this
+        await this.myServer.get('/posts/suggest/' + id, this.headers)
+          .then(res => {
+            console.log("response: " + JSON.stringify(res.data))
+            self.recommendedUsers = res.data.suggest_users
+          })
+      } catch (e) {
+        console.log(`get error: ${e}`)
+      }
     }
   },
 
   data () {
     return {
+      id: 1,
       posts: [],
+      recommendedUsers: [],
       isPostFormActivated: false,
       isUpdating: false,
       headers: {
