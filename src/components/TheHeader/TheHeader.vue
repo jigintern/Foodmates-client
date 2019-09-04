@@ -10,7 +10,7 @@
       <v-col cols="5" align-self="center" justify="end">
         <the-header-search-window />
       </v-col>
-      <v-col class="shrink mr-2" align-self="center" justify="end">
+      <v-col class="mr-2" align-self="center" justify="end">
         <the-header-user-card :user="authUser" />
       </v-col>
     </v-row>

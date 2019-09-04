@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Profile :profile="profile" />
+    <Profile :user="profile" />
     <PostsView :posts="posts" />
     <!--<PostModal id="post-modal"/>-->
   </div>
@@ -16,9 +16,9 @@ export default {
     PostsView
   },
 
-  async created () {
-    await this.getProfile()
-    await this.updatePosts()
+  created () {
+    this.getProfile()
+    this.updatePosts()
   },
 
   methods: {
