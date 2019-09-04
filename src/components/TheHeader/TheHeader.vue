@@ -10,8 +10,14 @@
       <v-col cols="5" align-self="center" justify="end">
         <the-header-search-window />
       </v-col>
-      <v-col class="mr-2" align-self="center" justify="end">
+      <v-col v-if="authUser" class="mr-2" align-self="center" justify="end">
         <the-header-user-card :user="authUser" />
+      </v-col>
+      <v-col v-if="authUser" class="mr-2" align-self="center" justify="end">
+        <v-btn @click="logout">ログアウト</v-btn>
+      </v-col>
+      <v-col v-else class="mr-2" align-self="center" justify="end">
+        <v-btn to="/login">ログイン</v-btn>
       </v-col>
     </v-row>
   </v-app-bar>
@@ -38,7 +44,13 @@ export default {
 
   data () {
     return {
-      
+    }
+  },
+
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.push('/login')
     }
   }
 }

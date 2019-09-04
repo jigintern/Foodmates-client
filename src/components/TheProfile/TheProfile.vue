@@ -7,7 +7,7 @@
         <span style="height:1.28em;font-size:32px;">{{ viewingUser.user_name }}</span>
       </div>
       <div v-if="viewingUser.id != authUser.id">
-        <follow-button />
+        <follow-button :user="viewingUser" />
       </div>
     </div>
     <p class="" style="font-size:12px;">{{ viewingUser.biography }}</p>

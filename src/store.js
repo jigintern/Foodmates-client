@@ -44,6 +44,7 @@ export default new Vuex.Store({
     },
 
     logout ({ commit }) {
+      console.log("logout!")
       commit('SET_AUTH_USER', null)
     },
 

@@ -18,6 +18,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  props: {
+    user: {
+      type: Object,
+      default: () => {}
+    }
+  },
+
   computed: {
     ...mapGetters({
       authUser: 'authUser',
@@ -26,10 +33,10 @@ export default {
   },
 
   mounted () {
-    console.log("fb: ", this.$store.getters.viewingUser)
+    console.log("fb: ", this.user)
     this.userAssociation = {
       "UserId": this.authUser.id,
-      "FollowId": this.viewingUser.id
+      "FollowId": this.user.id
     }
     this.myServer.post(
       '/friendships/isfollowing/',
@@ -55,10 +62,10 @@ export default {
 
   methods: {
     followToggle () {
-      console.log("fb: ", this.user_id)
+      console.log("fb: ", this.user.id)
       this.userAssociation = {
         "UserId": this.authUser.id,
-        "FollowId": this.viewingUser.id
+        "FollowId": this.user.id
       }
       this.isFollowing = !this.isFollowing
       this.myServer.post(
