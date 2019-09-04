@@ -53,6 +53,7 @@
 
 <script>
 import SearchWindow from './TheSearchWindow/TheSearchWindow'
+import { mapGetters } from 'vuex'
 
 const fileExtensions = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
 const fileMaxSize = 1e+7
@@ -61,6 +62,13 @@ export default {
   components: {
     SearchWindow,
   },
+
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
+  },
+
   data () {
     return {
       uploadedImageForView: null,
@@ -148,7 +156,7 @@ export default {
       await this.addPost()
         .then(() => {
           const content = {
-            "user_id": 1,
+            "user_id": this.authUser.id,
             "dish_id": self.selectedDish.id,
             "comment": self.comment,
             "image_address": self.uploadFileName
@@ -175,7 +183,6 @@ export default {
     },
 
     selectDish(dish) {
-      console.log("TPM: select_dish: ", dish)
       this.selectedDish = dish
     }
   }
