@@ -7,7 +7,7 @@
         <v-card v-if="selectedDish" class="d-flex align-center px-6 py-1 mb-2" @click="selectedDish=0" style="cursor:pointer;">
           <div class="suggest-info">
             <h2 class="body-1 suggest-info">{{ selectedDish.dish_name }}</h2>
-            <h5 class="caption grey--text suggest-info">{{ selectedDish.store_name }} , 茨城県, ひたちなか市</h5>
+            <h5 class="caption grey--text suggest-info">{{ selectedDish.store_name }}</h5>
           </div>
         </v-card>
       </v-row>
@@ -25,25 +25,25 @@
       </v-row>
 
       <v-row justify="center">
-        <v-textarea v-model="comment" outlined label="コメント" />
+        <v-textarea v-model="comment" label="Comment" filled auto-grow />
       </v-row>
 
       <v-row justify="center">
         <v-col v-if="!uploadedImageForView" cols="2">
           <v-btn icon @click="pickImage">
-            <v-icon color="orange">mdi-camera-enhance</v-icon>
+            <v-icon color="primary">mdi-camera-enhance</v-icon>
           </v-btn>
         </v-col>
         <v-col v-else cols="2">
           <v-btn icon @click="clearImage">
-            <v-icon color="orange">close</v-icon>
+            <v-icon color="primary">close</v-icon>
           </v-btn>
         </v-col>
         <v-col cols="4" class="px-1">
-          <v-btn outlined class="orange--text" @click="onCancel">キャンセル</v-btn>
+          <v-btn color="primary" type="submit" @click="onSubmit" block>投稿</v-btn>
         </v-col>
         <v-col cols="4" class="px-1">
-          <v-btn color="orange" type="submit" @click="onSubmit" block>投稿</v-btn>
+          <v-btn outlined class="primary--text" @click="onCancel">キャンセル</v-btn>
         </v-col>
       </v-row>
     </v-col>

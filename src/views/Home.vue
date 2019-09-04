@@ -9,11 +9,9 @@
     <v-btn
       :elevation="24"
       icon
-      bottom
-      right
-      fixed
-      color="orange"
+      fixed bottom right
       class="mr-8 mb-6"
+      color="primary"
       style="background-color:white;"
       @click="isPostFormActivated = true"
     >

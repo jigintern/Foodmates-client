@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field label="料理を検索" v-model="keyword" outlined rounded single-line hide-details flat append-icon="search"/>
+    <v-text-field label="Dish name" v-model="keyword" single-line filled hide-details />
     <div
       v-for="(suggest, index) in suggests()"
       @click="selectDish(suggest)"
@@ -9,7 +9,7 @@
       class="my-2"
     >
       <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
-      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }} , 茨城県, ひたちなか市</h5>
+      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }}</h5>
       <v-divider class="mt-2" color="grey" />
     </div>
   </div>
