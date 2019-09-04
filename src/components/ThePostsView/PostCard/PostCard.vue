@@ -23,7 +23,7 @@
       <v-row>
         <v-col cols="2" class="pa-0">
           <v-avatar size=32 class="ma-2" style="cursor:pointer;" @click="goProfile">
-            <img :src="`img/users/icon/2.JPG`">
+            <img :src="`https://t2.intern.jigd.info/${post.icon_address}`">
           </v-avatar>
         </v-col>
         <v-col cols="9" class="pa-0" align-self="center">
