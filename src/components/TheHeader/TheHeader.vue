@@ -21,11 +21,30 @@
 <script>
 import TheHeaderSearchWindow from './TheHeaderSearchWindow/TheHeaderSearchWindow'
 import TheHeaderLogo from './TheHeaderLogo/TheHeaderLogo'
+import TheHeaderUserCard from './TheHeaderUserCard/TheHeaderUserCard'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     TheHeaderLogo,
-    TheHeaderSearchWindow
+    TheHeaderSearchWindow,
+    TheHeaderUserCard
+  },
+
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
   }
 }
 </script>
+
+<style scoped>
+.row {
+  padding: 0;
+}
+
+.col {
+  padding: 0;
+}
+</style>

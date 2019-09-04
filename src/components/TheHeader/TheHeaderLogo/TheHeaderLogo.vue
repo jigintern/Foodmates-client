@@ -12,10 +12,7 @@
 export default {
   methods: {
     reload () {
-      this.$router.go({
-        path: this.$router.currentRoute.path,
-        force: true
-      })
+      this.$router.push('/')
     }
   }
 }

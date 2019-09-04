@@ -27,12 +27,6 @@
 
 <script>
 export default {
-  middleware: [
-    'unauthenticated'
-  ],
-
-  props: [],
-
   data () {
     return {
       id: '',
@@ -40,6 +34,10 @@ export default {
       password_show: false,
       error: null
     }
+  },
+
+  created () {
+    if (this.$store.getters.authUser) this.$router.push('/')
   },
 
   methods: {
@@ -55,7 +53,7 @@ export default {
         this.id = ''
         this.password = ''
         this.error = null
-        this.$router.push('/posts')
+        this.$router.push('/')
       } catch (e) {
         this.error = e.message
       }
