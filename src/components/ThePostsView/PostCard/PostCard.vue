@@ -22,7 +22,7 @@
 
       <v-row>
         <v-col cols="2" class="pa-0">
-          <v-avatar size=32 class="ma-2">
+          <v-avatar size=32 class="ma-2" style="cursor:pointer;" @click="goProfile">
             <img :src="`img/users/icon/2.JPG`">
           </v-avatar>
         </v-col>
@@ -47,7 +47,15 @@
 
 <script>
 export default {
-  props: ['post']
+  props: ['post'],
+  methods: {
+    goProfile () {
+      this.$router.push({
+        name: 'profile',
+        params: { user_id: this.post.user_id }
+      })
+    }
+  }
 }
 </script>
 
