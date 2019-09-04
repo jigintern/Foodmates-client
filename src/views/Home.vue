@@ -4,7 +4,7 @@
       更新
     </v-btn>
     <v-progress-circular v-if="isUpdating" indeterminate color="primary" />
-    <recommended-users :recommendedUsersID="recommendedUsers" />
+    <recommended-users :recommendedUsers="recommendedUsers" />
     <posts-view :posts="posts" />
     <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;background-color:white;" @click="isPostFormActivated = true">
       <v-icon size="64">mdi-pencil-circle</v-icon>
@@ -23,14 +23,12 @@
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
-import Profile from '../components/TheProfile/TheProfile'
 
 export default {
   components: {
     PostsView,
     PostModal,
-    RecommendedUsers,
-    Profile
+    RecommendedUsers
   },
 
   async created () {
@@ -70,10 +68,10 @@ export default {
       console.log("[Home.vue] getReccommendedUsers()")
       try {
         const self = this
-        await this.myServer.get('/posts/suggest/' + id, this.headers)
+        await this.myServer.get('/posts/suggest/' + self.id, this.headers)
           .then(res => {
             console.log("response: " + JSON.stringify(res.data))
-            self.recommendedUsers = res.data.suggest_users
+            self.recommendedUsers = res.data
           })
       } catch (e) {
         console.log(`get error: ${e}`)

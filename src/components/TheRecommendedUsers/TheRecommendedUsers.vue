@@ -2,7 +2,7 @@
   <div class="d-flex pa-4">
     <RecommendedUser
       class="ma-2"
-      v-for="(user, index) in recommendedUsersID"
+      v-for="(user, index) in recommendedUsers"
       :recommendedUser="user"
       :key="`recomended-user-${index}`"
     />
@@ -13,7 +13,7 @@
 import RecommendedUser from './RecommendedUser/RecommendedUser'
 
 export default {
-  props: ['recommendedUsersID'],
+  props: ['recommendedUsers'],
 
   components: {
     RecommendedUser
