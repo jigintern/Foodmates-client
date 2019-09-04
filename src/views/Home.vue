@@ -4,8 +4,7 @@
       更新
     </v-btn>
     <v-progress-circular v-if="isUpdating" indeterminate color="primary" />
-    <profile />
-    <recommended-users />
+    <recommended-users :recommendedUsers="recommendedUsers" />
     <posts-view :posts="posts" />
     <v-btn
       :elevation="24"
@@ -34,18 +33,17 @@
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
-import Profile from '../components/TheProfile/TheProfile'
 
 export default {
   components: {
     PostsView,
     PostModal,
-    RecommendedUsers,
-    Profile
+    RecommendedUsers
   },
 
   async created () {
     await this.updatePosts()
+    await this.getRecommendedUsers()
   },
 
   methods: {
@@ -74,12 +72,28 @@ export default {
     postCancel() {
       console.log("[Home.vue] postCancel()")
       this.isPostFormActivated = false
+    },
+
+    async getRecommendedUsers() {
+      console.log("[Home.vue] getReccommendedUsers()")
+      try {
+        const self = this
+        await this.myServer.get('/posts/suggest/' + self.id, this.headers)
+          .then(res => {
+            console.log("response: " + JSON.stringify(res.data))
+            self.recommendedUsers = res.data
+          })
+      } catch (e) {
+        console.log(`get error: ${e}`)
+      }
     }
   },
 
   data () {
     return {
+      id: 1,
       posts: [],
+      recommendedUsers: [],
       isPostFormActivated: false,
       isUpdating: false,
       headers: {
