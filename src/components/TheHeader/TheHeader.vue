@@ -1,11 +1,11 @@
 <template>
   <v-app-bar class="header" app color="primary">
-      <v-toolbar-title>
-        <the-header-logo />
-      </v-toolbar-title>
-      <v-toolbar-items class="search-bar ml-auto">
-        <the-header-search-window class="" />
-      </v-toolbar-items>
+    <v-toolbar-title>
+      <the-header-logo />
+    </v-toolbar-title>
+    <v-toolbar-items class="ml-auto">
+      <the-header-search-window />
+    </v-toolbar-items>
   </v-app-bar>
 </template>
 
@@ -13,10 +13,9 @@
 .header
   padding: 4px 4%
 
-@media (min-width: 1680px)
+@media (min-width: 1700px)
   .header
     padding: 4px calc(50% - 800px)
-
 </style>
 
 <script>
@@ -27,10 +26,6 @@ export default {
   components: {
     TheHeaderLogo,
     TheHeaderSearchWindow
-  },
-
-  data () {
-    return {}
   }
 }
 </script>
