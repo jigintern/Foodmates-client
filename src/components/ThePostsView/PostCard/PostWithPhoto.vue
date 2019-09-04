@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="d-flex pa-4">
-      <v-avatar class="mr-4" style="">
+      <v-avatar class="mr-4" style="cursor:pointer;" @click="goProfile">
         <img :src="post.user_icon_address">
       </v-avatar>
       <div class="d-flex flex-column">
@@ -34,7 +34,15 @@
 <script>
   export default {
     props: ['post'],
+    methods: {
+      goProfile () {
+      this.$router.push({
+        name: 'profile',
+        params: { user_id: this.post.user_id }
+      })
+    }
   }
+}
 </script>
 
 <style scoped>

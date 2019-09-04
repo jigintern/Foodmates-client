@@ -7,9 +7,9 @@ import Login from './views/Login.vue'
 
 Vue.use(Router)
 
-const User = {
-  template: '<div>User {{ $route.params.id }} </div>'
-}
+//const User = {
+//  template: '<div>User {{ $route.params.id }} </div>'
+//}
 
 export default new Router({
   mode: 'history',
@@ -22,14 +22,8 @@ export default new Router({
       component: Home
     },
     {
-      // "http://localhost:8080/user/:user_name"
-      path: '/user/:user_name',
-      name: 'user_name',
-      compornent: User
-    },
-    {
-      // "http://localhost:8080/Profile"
-      path: '/profile',
+      // "http://localhost:8080/users/:user_id"
+      path: '/users/:user_id',
       name: 'profile',
       component: Profile
     },

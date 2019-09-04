@@ -1,52 +1,73 @@
 <template>
   <div>
-    <div>
-      <TheHeader/>
-      <Profile />
-      <v-container grid-list-xl>
-        <v-layout row>
-          <v-flex justify-center xs12 md6 lg4 v-for="(post, index) in posts" :key="`post-${index}`">
-            <post-card :post="post"/>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </div>
+    <Profile :profile="profile" />
+    <PostsView :posts="posts" />
     <!--<PostModal id="post-modal"/>-->
   </div>
 </template>
 
 <script>
-import TheHeader from '../components/TheHeader/TheHeader'
-import PostCard from '../components/ThePostsView/PostCard/PostCard'
 import Profile from '../components/TheProfile/TheProfile'
-
-const postURL = 'http://86ab2198.ngrok.io/api/v1/posts/readall/'
+import PostsView from '../components/ThePostsView/ThePostsView'
 
 export default {
   components: {
-    PostCard,
-    TheHeader,
-    Profile
+    Profile,
+    PostsView
+  },
+
+  async created () {
+    await this.getProfile()
+    await this.updatePosts()
+  },
+
+  methods: {
+    async updatePosts() {
+      console.log("[Profile.vue] updatePosts()")
+      try {
+        this.isUpdating = true
+        const self = this
+        await this.myServer.get('/posts/read/' + this.$route.params.user_id, this.headers)
+          .then(res => {
+            console.log("response: " + JSON.stringify(res.data))
+            self.posts = res.data
+          })
+        this.isUpdating = false
+      } catch (e) {
+        console.log(`update error: ${e}`)
+      }
+    },
+
+    postCancel() {
+      console.log("[Profile.vue] postCancel()")
+      this.isPostFormActivated = false
+    },
+
+    async getProfile() {
+      console.log("[Profile.vue] getProfile()")
+      try {
+        const self = this
+        await this.myServer.get('/users/' + this.$route.params.user_id, this.headers)
+          .then(res => {
+            console.log("response: " + JSON.stringify(res.data))
+            self.profile = res.data
+          })
+      } catch (e) {
+        console.log(`get error: ${e}`)
+      }
+    }
   },
 
   data () {
     return {
-      info: {},
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
       },
-      posts: []
+      profile: {},
+      posts: [],
+      isUpdating: false,
     }
-  },
-
-  created () {
-    const self = this
-    this.$axios.get(postURL, this.headers)
-      .then(res => {
-        console.log(res.data)
-        self.posts = res.data
-      })
   }
 }
 </script>
