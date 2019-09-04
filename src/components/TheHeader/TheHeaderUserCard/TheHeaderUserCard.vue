@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn outlined rounded="" class="py-1 px-4">
+    <v-btn v-if="user" outlined rounded="" class="py-1 px-4">
       <v-row>
         <v-col class="shrink" align-self="center">
           <v-avatar size="32">
