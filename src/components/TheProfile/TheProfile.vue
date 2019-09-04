@@ -22,8 +22,6 @@
 <script>
 import FollowButton from '../FollowButton/FollowButton'
 
-const ProfileURL = 'http://t2.intern.jigd.info/api/v1/users/1'
-
 export default {
   props: ['profile'],
 
