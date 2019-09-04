@@ -1,21 +1,19 @@
 <template>
 <div class="d-flex flex-wrap justify-center px-4 py-8 white">
-  <router-link to="/Profile">
-    <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
-  </router-link>
+  <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ account.user_name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ profile.user_name }}</span>
       </div>
       <div v-if="account.id!='2'">
         <FollowButton />
       </div>
     </div>
-    <p class="" style="font-size:12px;">{{ account.biography }}</p>
+    <p class="" style="font-size:12px;">{{ profile.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ account.birth }}</span>
-      <v-icon class="figure mr-2" small>mdi-home-city</v-icon><span class="mr-8">{{ account.prefecture }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ profile.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ profile.country + ' ' + profile.prefecture }}</span>
     </div>
   </div>
 </div>
@@ -27,25 +25,10 @@ import FollowButton from '../FollowButton/FollowButton'
 const ProfileURL = 'http://t2.intern.jigd.info/api/v1/users/1'
 
 export default {
+  props: ['profile'],
+
   components: {
     FollowButton
-  },
-  created () {
-    const self = this
-    this.myServer.get('/users/1', this.headers)
-      .then(res => {
-        console.log(res.data)
-        self.account = res.data
-      })
-  },
-  data () {
-    return {
-      account: [],
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin': '*'
-      }
-    }
   }
 }
 </script>
@@ -71,7 +54,7 @@ export default {
     margin-left 64pt
     width 480pt
 
-    .account-name
+    .profile-name
       font-size 32pt
       height 1.2em
       font-weight 400
@@ -80,10 +63,10 @@ export default {
         margin-left 24pt
         font-size 10pt
 
-    .account-friendship
+    .profile-friendship
       font-size 6.4pt
 
-    .account-comment
+    .profile-comment
       margin-top 12pt
       margin-bottom 24pt
 
