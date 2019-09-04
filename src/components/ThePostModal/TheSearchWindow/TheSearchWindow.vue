@@ -1,24 +1,16 @@
 <template>
   <div>
-    <v-card v-if="select_dish!=0" class="d-flex align-center px-6 py-1 mb-2" @click="select_dish=0" style="cursor:pointer;">
-      <div class="suggest-info">
-        <h2 class="body-1 suggest-info">{{ select_dish.dish_name }}</h2>
-        <h5 class="caption grey--text suggest-info">{{ select_dish.store_name }} , 茨城県, ひたちなか市</h5>
-      </div>
-    </v-card>
-    <v-text-field v-model="keyword" outlined rounded single-line hide-details flat append-icon="search"/>
-    <div v-if="select_dish==0" class="mt-2 mb-4">
-      <div
-        v-for="(suggest, index) in suggests()"
-        @click="select_dish=suggest"
-        :key="`suggest-${index}`"
-        style="cursor: pointer;"
-        class="my-2"
-      >
-        <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
-        <h5 class="caption grey--text suggest-info">{{ suggest.store_name }} , 茨城県, ひたちなか市</h5>
-        <v-divider class="mt-2" color="grey" />
-      </div>
+    <v-text-field label="料理を検索" v-model="keyword" outlined rounded single-line hide-details flat append-icon="search"/>
+    <div
+      v-for="(suggest, index) in suggests()"
+      @click="selectDish(suggest)"
+      :key="`suggest-${index}`"
+      style="cursor: pointer;"
+      class="my-2"
+    >
+      <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
+      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }} , 茨城県, ひたちなか市</h5>
+      <v-divider class="mt-2" color="grey" />
     </div>
   </div>
 </template>
@@ -33,7 +25,6 @@ export default {
 
   data() {
     return {
-      select_dish: 0,
       dishes: [],
       keyword: '',
       headers: {
@@ -54,6 +45,11 @@ export default {
         return f
       })
       return suggests
+    },
+
+    selectDish (dish) {
+      console.log("TSW: select_dish: ", dish)
+      this.$emit('select_dish', dish)
     }
   }
 }

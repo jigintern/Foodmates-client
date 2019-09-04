@@ -6,7 +6,17 @@
     <v-progress-circular v-if="isUpdating" indeterminate color="primary" />
     <recommended-users :recommendedUsers="recommendedUsers" />
     <posts-view :posts="posts" />
-    <v-btn icon class="mx-8 my-6 orange--text" style="position:fixed;bottom:0;right:0;background-color:white;" @click="isPostFormActivated = true">
+    <v-btn
+      :elevation="24"
+      icon
+      bottom
+      right
+      fixed
+      color="orange"
+      class="mr-8 mb-6"
+      style="background-color:white;"
+      @click="isPostFormActivated = true"
+    >
       <v-icon size="64">mdi-pencil-circle</v-icon>
     </v-btn>
     <v-dialog
