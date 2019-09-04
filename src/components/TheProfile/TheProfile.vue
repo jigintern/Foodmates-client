@@ -5,9 +5,10 @@
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
         <span style="height:1.28em;font-size:32px;">{{ profile.user_name }}</span>
-        <span class="" style="font-size:8px;">{{ profile.following }} following {{ profile.followed }} followed</span>
       </div>
-      <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn>
+      <div v-if="account.id!='2'">
+        <FollowButton />
+      </div>
     </div>
     <p class="" style="font-size:12px;">{{ profile.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
@@ -19,12 +20,28 @@
 </template>
 
 <script>
+import FollowButton from '../FollowButton/FollowButton'
+
+const ProfileURL = 'http://t2.intern.jigd.info/api/v1/users/1'
+
 export default {
-  props: ['profile']
+  props: ['profile'],
+
+  components: {
+    FollowButton
+  }
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+.push_button {
+  background-color: white;
+}
+
+.push_button.active {
+  background-color: red;
+}
+
 .profile
   display flex
   justify-content center
