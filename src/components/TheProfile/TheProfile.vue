@@ -4,16 +4,16 @@
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ user.user_name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ viewingUser.user_name }}</span>
       </div>
-      <div v-if="user.id != authUser.id">
-        <follow-button :user_id="user.id" />
+      <div v-if="viewingUser.id != authUser.id">
+        <follow-button />
       </div>
     </div>
-    <p class="" style="font-size:12px;">{{ user.biography }}</p>
+    <p class="" style="font-size:12px;">{{ viewingUser.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ user.birth }}</span>
-      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ user.country + ' ' + user.prefecture }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ viewingUser.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ viewingUser.country + ' ' + viewingUser.prefecture }}</span>
     </div>
   </div>
 </div>
@@ -24,17 +24,10 @@ import FollowButton from '../FollowButton/FollowButton'
 import { mapGetters } from 'vuex'
 
 export default {
-  props: {
-    user: {
-      type: Object,
-      required: false,
-      default: () => {}
-    }
-  },
-
   computed: {
     ...mapGetters({
-      authUser: 'authUser'
+      authUser: 'authUser',
+      viewingUser: 'viewingUser'
     })
   },
 

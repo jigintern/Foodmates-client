@@ -10,36 +10,53 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    authenticatedUser: null
+    authenticatedUser: null,
+    viewingUser: null
   },
 
   mutations: {
-    SET_USER (state, user) {
+    SET_AUTH_USER (state, user) {
       state.authenticatedUser = user
-      console.log('SET_USER: ' + state.authenticatedUser)
-    }
+      console.log('SET_AUTH_USER: ' + state.authenticatedUser)
+    },
+    SET_VIEW_USER (state, user) {
+      state.viewingUser = user
+      console.log('SET_VIEW_USER: ' + state.viewingUser)
+    },
   },
 
   getters: {
-    authUser: state => state.authenticatedUser
+    authUser: state => state.authenticatedUser,
+    viewingUser: state => state.viewingUser
   },
 
   actions: {
     async login ({ commit }, payload) {
-      console.log("[store] login: " + JSON.stringify(payload))
-      console.log(this)
       await api.get('/users/' + payload.id)
         .then(res => {
           console.log(res)
           if (res.status != 200) return
-          commit('SET_USER', res.data)
+          commit('SET_AUTH_USER', res.data)
         })
         .catch((e) => {
           console.log('login failed: ' + e)
         })
     },
+
     logout ({ commit }) {
-      commit('SET_USER', null)
+      commit('SET_AUTH_USER', null)
+    },
+
+    async viewUserInfo ({ commit }, id) {
+      await api.get('/users/' + id)
+        .then(res => {
+          console.log(res)
+          if (res.status != 200) return
+          commit('SET_VIEW_USER', res.data)
+        })
+        .catch((e) => {
+          console.log('login failed: ' + e)
+        })
     }
   },
   

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <Profile :user="profile" />
+    <Profile />
     <PostsView :posts="posts" />
-    <!--<PostModal id="post-modal"/>-->
   </div>
 </template>
 
@@ -22,12 +21,12 @@ export default {
   },
 
   methods: {
-    async updatePosts() {
+    updatePosts() {
       console.log("[Profile.vue] updatePosts()")
       try {
         this.isUpdating = true
         const self = this
-        await this.myServer.get('/posts/read/' + this.$route.params.user_id, this.headers)
+        this.myServer.get('/posts/read/' + this.$route.params.user_id, this.headers)
           .then(res => {
             console.log("response: " + JSON.stringify(res.data))
             self.posts = res.data
@@ -43,18 +42,9 @@ export default {
       this.isPostFormActivated = false
     },
 
-    async getProfile() {
+    getProfile() {
       console.log("[Profile.vue] getProfile()")
-      try {
-        const self = this
-        await this.myServer.get('/users/' + this.$route.params.user_id, this.headers)
-          .then(res => {
-            console.log("response: " + JSON.stringify(res.data))
-            self.profile = res.data
-          })
-      } catch (e) {
-        console.log(`get error: ${e}`)
-      }
+      this.$store.dispatch('viewUserInfo', this.$route.params.user_id)
     }
   },
 
@@ -64,7 +54,7 @@ export default {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
       },
-      profile: {},
+      user: {},
       posts: [],
       isUpdating: false,
     }
