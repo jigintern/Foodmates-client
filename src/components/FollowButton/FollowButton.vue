@@ -19,12 +19,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    user: {
-      type: Object,
-      required: true,
-      default: () => {
-        return { id: 0 }
-      }
+    user_id: {
+      type: Number,
+      required: false,
+      default: 0
     }
   },
 
@@ -35,13 +33,18 @@ export default {
   },
 
   created () {
+    console.log("fb: ", this.user_id)
+    this.userAssociation = {
+      "UserId": this.authUser.id,
+      "FollowId": this.user_id
+    }
     this.myServer.post(
       '/friendships/isfollowing/',
       this.userAssociation,
       { headers: this.headers }
     ).then(res => {
-      console.log(res.data)
-      console.log(typeof(res.data))
+      console.log("res_data: ", res.data)
+      console.log("ass: ", this.userAssociation)
       this.isFollowing = res.data.following
     })
   },
@@ -51,14 +54,19 @@ export default {
       headers: {'Content-Type':'application/x-www-form-urlencoded'},
       isFollowing: true,
       userAssociation: {
-        "UserId": this.authUser.id,
-        "FollowId": this.user.id
+        "UserId": 0,
+        "FollowId": 0
       }
     }
   },
 
   methods: {
     followToggle () {
+      console.log("fb: ", this.user_id)
+      this.userAssociation = {
+        "UserId": this.authUser.id,
+        "FollowId": this.user_id
+      }
       this.isFollowing = !this.isFollowing
       this.myServer.post(
         '/friendships/isfollowing/',
@@ -66,24 +74,15 @@ export default {
         { headers: this.headers }
       )
       .then(res => {
-        console.log(res.data)
-        if (res.data.following == true){
-          this.myServer.post(
-            '/friendships/destroy/',
-            this.userAssociation,
-            { headers: this.headers }
-          ).then(() => {
-            this.isFollowing = false
-          })
-        } else {
-          this.myServer.post(
-            '/friendships/create/',
-            this.userAssociation,
-            { headers: this.headers }
-          ).then(() => {
-            this.isFollowing = true
-          })
-        }
+        console.log("res_data: ", res.data)
+        console.log("ass: ", this.userAssociation)
+        this.myServer.post(
+          '/friendships/' + (res.data.following ? 'destroy/' : 'create/'),
+          this.userAssociation,
+          { headers: this.headers }
+        ).then(() => {
+          this.isFollowing = !res.data.following
+        })
       })
     }
   }

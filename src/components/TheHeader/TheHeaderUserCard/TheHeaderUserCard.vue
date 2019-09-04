@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-btn outlined rounded="" flat class="py-1 px-4">
+    <v-btn outlined rounded="" class="py-1 px-4">
       <v-row>
         <v-col class="shrink" align-self="center">
-          <v-avater size="32">
+          <v-avatar size="32">
             <v-img :src="`https://t2.intern.jigd.info/${user.icon_address}`" />
-          </v-avater>
+          </v-avatar>
         </v-col>
         <v-col align-self="center">
           <span class="title">{{ user.user_name }}</span>

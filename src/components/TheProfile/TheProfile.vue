@@ -4,16 +4,16 @@
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ profile.user_name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ user.user_name }}</span>
       </div>
-      <div v-if="account.id!='2'">
-        <FollowButton />
+      <div v-if="user.id != authUser.id">
+        <follow-button :user_id="user.id" />
       </div>
     </div>
-    <p class="" style="font-size:12px;">{{ profile.biography }}</p>
+    <p class="" style="font-size:12px;">{{ user.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ profile.birth }}</span>
-      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ profile.country + ' ' + profile.prefecture }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ user.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ user.country + ' ' + user.prefecture }}</span>
     </div>
   </div>
 </div>
@@ -21,9 +21,22 @@
 
 <script>
 import FollowButton from '../FollowButton/FollowButton'
+import { mapGetters } from 'vuex'
 
 export default {
-  props: ['profile'],
+  props: {
+    user: {
+      type: Object,
+      required: false,
+      default: () => {}
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
+  },
 
   components: {
     FollowButton
