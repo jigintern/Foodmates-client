@@ -88,6 +88,7 @@ export default {
         { headers: { 'content-type': 'multipart/form-data' }}
       ).then(res => {
         const resObj = JSON.parse(res.data)
+        console.log(resObj)
         self.uploadFileName = resObj.file_name
       }).catch(function (error) {
         console.log(error)
