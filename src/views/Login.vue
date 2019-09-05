@@ -50,9 +50,6 @@ export default {
             'password': this.password
           }
         )
-        this.id = ''
-        this.password = ''
-        this.error = null
         this.$router.push('/')
       } catch (e) {
         this.error = e.message

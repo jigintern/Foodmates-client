@@ -192,6 +192,7 @@ export default {
             'icon_address': self.uploadFileName
           }
           self.$store.dispatch('signup', info)
+          this.$router.push('/')
         })
     }
   }
