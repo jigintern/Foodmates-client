@@ -20,6 +20,7 @@
       <v-icon size="64">mdi-pencil-circle</v-icon>
     </v-btn>
     <v-dialog
+      scrollable
       v-model="isPostFormActivated"
       width="360"
       z-index="10"

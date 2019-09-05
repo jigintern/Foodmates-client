@@ -9,7 +9,7 @@
       class="my-2"
     >
       <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
-      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }} , 茨城県, ひたちなか市</h5>
+      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }}</h5>
       <v-divider class="mt-2" color="grey" />
     </div>
   </div>
@@ -17,10 +17,8 @@
 
 <script>
 export default {
-  created() {
-    const self = this
-    this.myServer.get('/dishes/readall/', this.headers)
-      .then(res => {self.dishes = res.data})
+  async created() {
+    await this.updateSuggests()
   },
 
   data() {
@@ -34,6 +32,12 @@ export default {
   },
 
   methods: {
+    async updateSuggests () {
+      const self = this
+      this.myServer.get('/dishes/readall/', this.headers)
+        .then(res => {self.dishes = res.data})
+    },
+
     suggests () {
       let keys = this.keyword.split(' ');
       if(keys[0]=='') return []

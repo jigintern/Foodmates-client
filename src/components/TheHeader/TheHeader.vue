@@ -14,7 +14,7 @@
         <the-header-user-card :user="authUser" />
       </v-col>
       <v-col v-if="authUser" class="mr-2" align-self="center" justify="end">
-        <v-btn @click="logout">ログアウト</v-btn>
+        <v-btn block text @click="logout">ログアウト</v-btn>
       </v-col>
       <v-col v-if="!authUser" class="mr-2" align-self="center" justify="end" cols="1">
         <v-btn block text to="/login">ログイン</v-btn>

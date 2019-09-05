@@ -16,7 +16,7 @@
           @click:append="password_show = !password_show"
           @keyup.enter="onSubmit"
           style="width:100%;"
-        />    
+        />
         <v-btn @click="onSubmit" color="primary" class="mt-8 mb-4">
           log in
         </v-btn>
