@@ -6,7 +6,7 @@
     <div class="d-flex flex-column">
       <span style="height:1.28em;font-size:14.4px;">{{ userData.name }}</span>
       <div class="d-flex">
-        <span class="" style="font-size:8px;">{{ recommendedUser.times + " times match" }}</span>
+        <span class="grey--text text--darken-2" style="font-size:8px;">{{ recommendedUser.times + " times match" }}</span>
         <follow-button :user="userData" />
       </div>
     </div>

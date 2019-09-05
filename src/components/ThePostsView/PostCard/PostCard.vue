@@ -3,9 +3,9 @@
     <header class="d-flex py-2 px-4 primary white--text">
       <div class="d-flex flex-column">
         <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
-        <span class="" style="font-size:10px;">{{ post.store_name }}</span>
+        <span class="" style="font-size:8px;">{{ post.store_name }}</span>
       </div>
-      <span class="ml-auto" style="font-size:10px;">{{ post.created_at }}</span>
+      <span class="ml-auto" style="font-size:8px;">{{ post.created_at }}</span>
     </header>
     <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
     <div class="d-flex">

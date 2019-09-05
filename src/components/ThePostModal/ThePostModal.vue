@@ -16,7 +16,7 @@
 
         <v-card v-if="addDishWindowOpenedFlag" v-model="isAddDishWindowOpened" class="my-2 pa-4">
             <header class="d-flex px-2 py-2 primary mt-n4 mx-n4 white--text">
-              <span style="font-size:10px">料理登録</span>
+              <span style="font-size:8px">料理登録</span>
               <v-icon small color="white" class="ml-auto" @click="addDishWindowOpenedFlag=false">mdi-close</v-icon>
             </header>
           <div :key="0">
