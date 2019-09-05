@@ -54,7 +54,7 @@ export default {
     goProfile () {
       this.$router.push({
         name: 'profile',
-        params: { user_id: this.post.user_id }
+        params: { user_id: this.post.login_name }
       })
     }
   }
