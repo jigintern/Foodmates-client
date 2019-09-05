@@ -6,7 +6,7 @@
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ viewingUser.user_name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ viewingUser.name }}</span>
       </div>
       <div v-if="viewingUser.id != authUser.id">
         <follow-button :user="viewingUser" />

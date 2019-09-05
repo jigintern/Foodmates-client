@@ -6,8 +6,8 @@
         <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image pa-2">
           <v-row align="end" class="fill-height">
             <v-sheet tile color="rgba(0, 0, 0, .5)" class="lightbox white--text pa-2" width="100%">
-              <span class="caption">{{ post.restaurant_name }}</span>
-              <span class="body-1 font-weight-black">{{ post.dish_name }}</span>
+              <h4 class="caption ml-2">{{ post.store_name }}</h4>
+              <span class="ml-4 body-1 font-weight-black">{{ post.dish_name }}</span>
             </v-sheet>
           </v-row>
         </v-img>
@@ -15,8 +15,8 @@
 
       <v-row v-else>
         <v-sheet tile class="px-4 py-2 orange white--text" style="width: 100%;">
-          <span class="caption">{{ post.restaurant_name }}</span>
-          <span class="body-1 ml-2">{{ post.dish_name }}</span>
+          <h4 class="caption ml-2">{{ post.store_name }}</h4>
+          <span class="body-1 ml-4">{{ post.dish_name }}</span>
         </v-sheet>
       </v-row>
 
@@ -36,11 +36,13 @@
       <v-row>
         <p class="comment body-1 mx-5">{{ post.comment }}</p>
       </v-row>
+<!-- 
       <div class="d-flex justify-end pa-4">
         <v-icon class="px-2">mdi-bookmark-outline</v-icon>
         <v-icon class="px-2">mdi-message-outline</v-icon>
         <v-icon class="px-2">mdi-dots-vertical</v-icon>
       </div>
+ -->
     </v-col>
   </v-card>
 </template>

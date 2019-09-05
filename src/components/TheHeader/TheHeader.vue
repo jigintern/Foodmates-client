@@ -1,6 +1,6 @@
 <template>
   <v-app-bar color="primary" app>
-    <v-row>
+    <v-row class="fill-height">
       <v-col>
         <v-toolbar-title>
           <the-header-logo />
@@ -16,8 +16,8 @@
       <v-col v-if="authUser" class="mr-2" align-self="center" justify="end">
         <v-btn @click="logout">ログアウト</v-btn>
       </v-col>
-      <v-col v-else class="mr-2" align-self="center" justify="end">
-        <v-btn to="/login">ログイン</v-btn>
+      <v-col v-else class="mr-2" align-self="center" justify="end" cols="1">
+        <v-btn block text to="/login">ログイン</v-btn>
       </v-col>
     </v-row>
   </v-app-bar>
