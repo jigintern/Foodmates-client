@@ -4,19 +4,54 @@
 
     <v-col>
       <v-row>
-        <v-card v-if="selectedDish" class="d-flex align-center px-6 py-1 mb-2" @click="selectedDish=0" style="cursor:pointer;">
-          <div class="suggest-info">
-            <h2 class="body-1 suggest-info">{{ selectedDish.dish_name }}</h2>
-            <h5 class="caption grey--text suggest-info">{{ selectedDish.store_name }} , 茨城県, ひたちなか市</h5>
-          </div>
-        </v-card>
+        <v-col class="justify-center">
+          <v-card v-if="selectedDish" class="d-flex align-center px-6 py-1 mb-2" @click="selectedDish=0" style="cursor:pointer;">
+            <div class="suggest-info">
+              <h2 class="body-1 suggest-info">{{ selectedDish.dish_name }}</h2>
+              <h5 class="caption grey--text suggest-info">{{ selectedDish.store_name }}</h5>
+            </div>
+          </v-card>
+        </v-col>
       </v-row>
 
       <v-row justify="center">
         <v-col cols=12>
-          <search-window @select_dish="selectDish" />
+          <search-window ref="searchWindow" @select_dish="selectDish" />
         </v-col>
       </v-row>
+
+      <v-col align-self="center" justify="end">
+        <v-expansion-panels v-model="isAddDishWindowOpened" class="my-2">
+          <v-expansion-panel :key="0">
+            <v-expansion-panel-header class="px-2 py-0" expand-icon="mdi-plus">
+              <h1 class="ml-2 body-1">料理を登録</h1>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
+                <v-text-field
+                  v-model="newDishRestaurantName"
+                  label="店名"
+                  @keyup.enter="onSubmitNewDish"
+                  style="width:100%;"
+                  class="pa-0 my-2"
+                  hide-details
+                />
+                <v-text-field
+                  v-model="newDishName"
+                  label="料理名"
+                  @keyup.enter="onSubmitNewDish"
+                  style="width:100%;"
+                  class="pa-0 my-2"
+                  hide-details
+                />
+                <v-btn @click="onSubmitNewDish" color="primary">
+                  登録
+                </v-btn>
+              </v-form>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
 
       <input type="file" @change="onImageChange" style="display: none;" ref="image">
 
@@ -76,6 +111,9 @@ export default {
       comment: '',
       selectedDish: null,
       uploadFileName: '',
+      newDishRestaurantName: '',
+      newDishName: '',
+      isAddDishWindowOpened: [],
       headers: {
         'Content-Type':'application/x-www-form-urlencoded',
       }
@@ -184,6 +222,28 @@ export default {
 
     selectDish(dish) {
       this.selectedDish = dish
+    },
+
+    async onSubmitNewDish() {
+      console.log("[ThePostModal.vue] onSubmitNewDish()")
+      const self = this
+      const content = {
+        "store_name": this.newDishRestaurantName,
+        "dish_name": this.newDishName
+      }
+      self.myServer.post(
+        '/dishes/create/',
+        content,
+        { headers: this.headers }
+      ).then(res => {
+        this.selectedDish = res.data
+        this.isAddDishWindowOpened = []
+        this.newDishRestaurantName = ''
+        this.newDishName = ''
+        this.$refs.searchWindow.updateSuggests()
+      }).catch((e) => {
+        console.log(e)
+      })
     }
   }
 }
