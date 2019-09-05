@@ -6,7 +6,6 @@
     <v-toolbar-items class="ml-auto">
       <the-header-search-window />
     </v-toolbar-items>
-    <v-btn @click="logout">ログアウト</v-btn>
   </v-app-bar>
 </template>
 
@@ -27,18 +26,6 @@ export default {
   components: {
     TheHeaderLogo,
     TheHeaderSearchWindow
-  },
-
-  data () {
-    return {
-    }
-  },
-
-  methods: {
-    logout() {
-      this.$store.dispatch('logout')
-      this.$router.push('/login')
-    }
   }
 }
 </script>

@@ -21,17 +21,17 @@
       <input type="file" @change="onImageChange" style="display: none;" ref="image">
 
       <v-row justify="center">
-        <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;" class="pa-3" />
+        <v-textarea v-model="comment" label="Comment" filled auto-grow />
       </v-row>
 
       <v-row justify="center">
-        <v-textarea v-model="comment" label="Comment" filled auto-grow />
+        <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;" class="pa-3" />
       </v-row>
 
       <v-row justify="center">
         <v-col v-if="!uploadedImageForView" cols="2">
           <v-btn icon @click="pickImage">
-            <v-icon color="primary">mdi-camera-enhance</v-icon>
+            <v-icon color="primary">mdi-image-plus</v-icon>
           </v-btn>
         </v-col>
         <v-col v-else cols="2">
