@@ -27,7 +27,10 @@
           </v-avatar>
         </v-col>
         <v-col cols="9" class="pa-0" align-self="center">
-          <v-row class="body-1">{{ post.user_name }}</v-row>
+          <v-row class="body-1">
+            <span class="title">{{ post.user_name }}</span>
+            <span class="caption ml-3">@{{ post.login_name }}</span>
+          </v-row>
         </v-col>
       </v-row>
       <v-row>

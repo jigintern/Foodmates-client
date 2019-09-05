@@ -4,13 +4,13 @@
       <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
         <v-text-field
           v-model="loginName"
-          label="LoginName"
+          label="ログイン名(ID)"
           @keyup.enter="onSubmit"
           style="width:100%;"
         />
         <v-text-field
           v-model="password"
-          label="Password"
+          label="パスワード"
           :append-icon="password_show ? 'visibility' : 'visibility_off'"
           :type="password_show ? 'text' : 'password'"
           @click:append="password_show = !password_show"
@@ -51,6 +51,7 @@ export default {
   methods: {
     async onSubmit () {
       try {
+        const self = this
         await this.$store.dispatch(
           'login',
           {
@@ -58,10 +59,7 @@ export default {
             'password': this.password
           }
         ).then(() => {
-          this.loginName = ''
-          this.password = ''
-          this.error = null
-          if(this.authUser) this.$router.push('/')
+          if(self.authUser) self.$router.push('/')
         })
       } catch (e) {
         this.error = e.message

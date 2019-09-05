@@ -1,21 +1,25 @@
 <template>
   <v-card class="d-flex pa-4">
     <v-avatar class="mr-4" size="32">
-      <img :src="userData.icon_address">
+      <img :src="`https://t2.intern.jigd.info/${userData.icon_address}`">
     </v-avatar>
     <div class="d-flex flex-column">
       <span style="height:1.28em;font-size:14.4px;">{{ userData.name }}</span>
       <div class="d-flex">
         <span class="" style="font-size:8px;">{{ recommendedUser.times + " times match" }}</span>
-        <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn>
+        <follow-button :user="userData" />
+        <!-- <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn> -->
       </div>
     </div>
   </v-card>
 </template>
 
 <script>
+import FollowButton from '../../FollowButton/FollowButton'
+
 export default {
   components: {
+    FollowButton
   },
   props: [
     'recommendedUser'
@@ -30,7 +34,7 @@ export default {
       try {
         this.isUpdating = true
         const self = this
-        await this.myServer.get('/users/' + this.recommendedUser.user_id, this.headers)
+        await this.myServer.get('/users/read/id/' + this.recommendedUser.user_id, this.headers)
           .then(res => {
             console.log("response: " + JSON.stringify(res.data))
             self.userData = res.data
@@ -47,7 +51,7 @@ export default {
         'Content-Type': 'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin': '*'
       },
-      userData: []
+      userData: null
     }
   }
 }

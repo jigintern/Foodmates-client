@@ -2,9 +2,9 @@
   <div class="d-flex pa-4">
     <RecommendedUser
       class="ma-2"
-      v-for="(user, index) in recommendedUsers"
+      v-for="user in recommendedUsers"
       :recommendedUser="user"
-      :key="`recomended-user-${index}`"
+      :key="`recomended-user-${user.id}`"
     />
   </div>
 </template>

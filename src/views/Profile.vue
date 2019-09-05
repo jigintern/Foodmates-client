@@ -42,9 +42,9 @@ export default {
       this.isPostFormActivated = false
     },
 
-    getProfile() {
+    async getProfile() {
       console.log("[Profile.vue] getProfile()")
-      this.$store.dispatch('viewUserInfo', this.$route.params.user_id)
+      await this.$store.dispatch('viewUserInfo', this.$route.params.user_id)
     }
   },
 
