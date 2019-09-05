@@ -30,9 +30,23 @@ export default {
   components: {
     PostCard
   },
+  async created () {
+    const wait = (sec) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, sec*1000)
+      })
+    }
+    try {
+      await wait(1)
+      this.positioning()
+      await wait(1)
+      this.positioning()
+    } catch (err) {
+      console.error(err)
+    }
+  },
   mounted () {
     window.addEventListener('resize', this.positioning)
-    window.addEventListener('load', this.positioning)
   },
   updated () {
     this.positioning()
