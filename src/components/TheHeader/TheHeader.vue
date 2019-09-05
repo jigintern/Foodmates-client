@@ -5,7 +5,6 @@
     </v-toolbar-title>
     <v-toolbar-items class="ml-auto">
       <the-header-search-window />
-      <the-header-user-card :user="authUser" style="display:none;" />
     </v-toolbar-items>
   </v-app-bar>
 </template>
@@ -22,30 +21,11 @@
 <script>
 import TheHeaderSearchWindow from './TheHeaderSearchWindow/TheHeaderSearchWindow'
 import TheHeaderLogo from './TheHeaderLogo/TheHeaderLogo'
-import TheHeaderUserCard from './TheHeaderUserCard/TheHeaderUserCard'
-import { mapGetters } from 'vuex'
 
 export default {
   components: {
     TheHeaderLogo,
-    TheHeaderSearchWindow,
-    TheHeaderUserCard
-  },
-
-  computed: {
-    ...mapGetters({
-      authUser: 'authUser'
-    })
+    TheHeaderSearchWindow
   }
 }
 </script>
-
-<style scoped>
-.row {
-  padding: 0;
-}
-
-.col {
-  padding: 0;
-}
-</style>

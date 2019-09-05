@@ -1,47 +1,25 @@
 <template>
   <v-card>
-    <v-col class="px-3">
-
-      <v-row v-if="post.image_address">
-        <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image pa-2">
-          <v-row align="end" class="fill-height">
-            <v-sheet tile color="rgba(0, 0, 0, .5)" class="lightbox white--text pa-2" width="100%">
-              <span class="caption">{{ post.restaurant_name }}</span>
-              <span class="body-1 font-weight-black">{{ post.dish_name }}</span>
-            </v-sheet>
-          </v-row>
-        </v-img>
-      </v-row>
-
-      <v-row v-else>
-        <v-sheet tile class="px-4 py-2 orange white--text" style="width: 100%;">
-          <span class="caption">{{ post.restaurant_name }}</span>
-          <span class="body-1 ml-2">{{ post.dish_name }}</span>
-        </v-sheet>
-      </v-row>
-
-      <v-row>
-        <v-col cols="2" class="pa-0">
-          <v-avatar size=32 class="ma-2" style="cursor:pointer;" @click="goProfile">
-            <img :src="`img/users/icon/2.JPG`">
-          </v-avatar>
-        </v-col>
-        <v-col cols="9" class="pa-0" align-self="center">
-          <v-row class="body-1">{{ post.user_name }}</v-row>
-        </v-col>
-      </v-row>
-      <v-row>
-        <h4 style="text-align: right; width: 100%;" class="pr-4 caption grey--text">{{ post.created_at }}</h4>
-      </v-row>
-      <v-row>
-        <p class="comment body-1 mx-5">{{ post.comment }}</p>
-      </v-row>
+    <header class="d-flex flex-column py-2 px-4 primary white--text">
+        <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
+        <span class="" style="font-size:10px;">{{ post.store_name }}</span>
+    </header>
+    <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
+    <div class="d-flex">
+      <v-avatar small class="ma-4" style="cursor:pointer;" @click="goProfile">
+        <img :src="`img/users/icon/2.JPG`">
+      </v-avatar>
+    <div class="d-flex flex-column mt-4 mr-8">
+      <span style="height:1.28em;">{{ post.user_name }}</span>
+      <span style="font-size:8px;">{{ post.created_at }}</span>
+      <p class="mt-2" style="text-align:justify;font-size:12.8px;">{{ post.comment }}</p>
+    </div>
+    </div>
       <div class="d-flex justify-end pa-4">
         <v-icon class="px-2">mdi-bookmark-outline</v-icon>
         <v-icon class="px-2">mdi-message-outline</v-icon>
         <v-icon class="px-2">mdi-dots-vertical</v-icon>
       </div>
-    </v-col>
   </v-card>
 </template>
 
@@ -60,13 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  padding: 0 0;
-}
-
-.col {
-  padding: 0 0;
-}
 
 .post-image {
   max-height: 300px;

@@ -27,12 +27,6 @@ export default new Router({
       name: 'profile',
       component: Profile
     },
-    // {
-    //   // "http://localhost:8080/Profile"
-    //   path: '/debug',
-    //   name: 'debug',
-    //   component: Debug
-    // },
     {
       // "http://localhost:8080/Login"
       path: '/login',

@@ -1,11 +1,8 @@
 <template>
   <div>
-    <v-btn color="#679aba" dark @click="updatePosts">
-      更新
-    </v-btn>
-    <v-progress-circular v-if="isUpdating" indeterminate color="primary" />
     <recommended-users :recommendedUsers="recommendedUsers" />
-    <posts-view :posts="posts" />
+    <posts-view class="post-view" :posts="posts" />
+
     <v-btn
       :elevation="24"
       icon
@@ -17,6 +14,8 @@
     >
       <v-icon size="64">mdi-pencil-circle</v-icon>
     </v-btn>
+    
+    <Menu class="menu" @reflesh="updatePosts" />
     <v-dialog
       v-model="isPostFormActivated"
       width="360"
@@ -27,13 +26,26 @@
   </div>
 </template>
 
+<style lang="stylus" scoped>
+.menu
+  position: fixed
+  top: 80px
+  padding-left: 4%
+
+@media (min-width: 1700px)
+  .header
+    padding-left: calc(50% - 800px)
+</style>
+
 <script>
+import Menu from '../components/TheMenu/TheMenu'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
 
 export default {
   components: {
+    Menu,
     PostsView,
     PostModal,
     RecommendedUsers
