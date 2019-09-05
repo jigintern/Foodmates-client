@@ -1,15 +1,15 @@
 <template>
   <div>
-    <v-btn v-if="user" outlined rounded="" class="px-4">
+    <v-btn v-if="user" outlined rounded class="px-4" :to="`/users/${user.login_name}`">
       <v-row>
         <v-col class="shrink" align-self="center">
           <v-avatar size="32">
             <v-img :src="`https://t2.intern.jigd.info/${user.icon_address}`" />
           </v-avatar>
         </v-col>
-        <v-col align-self="center">
+        <v-col class="grow" align-self="center">
           <span class="title">{{ user.name }}</span>
-          <span class="caption ml-3">@{{ user.id }}</span>
+          <span class="caption ml-3">@{{ user.login_name }}</span>
         </v-col>
       </v-row>
     </v-btn>

@@ -79,6 +79,7 @@
 
 <script>
 import DatePicker from '../components/DatePicker/DatePicker'
+import { mapGetters } from 'vuex'
 
 const fileExtensions = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
 const fileMaxSize = 1e+7
@@ -86,6 +87,12 @@ const fileMaxSize = 1e+7
 export default {
   components: {
     DatePicker
+  },
+
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
   },
 
   data() {
@@ -181,7 +188,7 @@ export default {
       console.log("[Signup.vue] onSubmit()")
       const self = this
       await this.addPost()
-        .then(() => {
+        .then(async () => {
           const info = {
             'login_name': self.loginName,
             'name': self.name,
@@ -191,8 +198,16 @@ export default {
             'biography': self.biography,
             'icon_address': self.uploadFileName
           }
-          self.$store.dispatch('signup', info)
-          this.$router.push('/')
+          await self.$store.dispatch('signup', info)
+          await self.$store.dispatch(
+            'login',
+            {
+              'login_name': self.loginName,
+              'password': self.password
+            }
+          ).then(() => {
+            if(self.authUser) self.$router.push('/')
+          })
         })
     }
   }
