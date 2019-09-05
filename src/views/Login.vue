@@ -3,8 +3,8 @@
     <v-card class="mt-4 px-12 py-8" style="flex:0 1 640px;">
       <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
         <v-text-field
-          v-model="id"
-          label="ID"
+          v-model="loginName"
+          label="LoginName"
           @keyup.enter="onSubmit"
           style="width:100%;"
         />
@@ -26,14 +26,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
-      id: '',
+      loginName: '',
       password: '',
       password_show: false,
       error: null
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
   },
 
   created () {
@@ -46,14 +54,15 @@ export default {
         await this.$store.dispatch(
           'login',
           {
-            'id': this.id,
+            'login_name': this.loginName,
             'password': this.password
           }
-        )
-        this.id = ''
-        this.password = ''
-        this.error = null
-        this.$router.push('/')
+        ).then(() => {
+          this.loginName = ''
+          this.password = ''
+          this.error = null
+          if(this.authUser) this.$router.push('/')
+        })
       } catch (e) {
         this.error = e.message
       }

@@ -32,10 +32,11 @@ export default new Vuex.Store({
 
   actions: {
     async login ({ commit }, payload) {
-      await api.get('/users/' + payload.id)
+      console.log("login_store: ", JSON.stringify(payload))
+      await api.get('/users/' + payload.login_name)
         .then(res => {
           console.log(res)
-          if (res.status != 200) return
+          if (res.status != 200 || !res.data.id) return
           commit('SET_AUTH_USER', res.data)
         })
         .catch((e) => {
@@ -48,6 +49,7 @@ export default new Vuex.Store({
       commit('SET_AUTH_USER', null)
     },
 
+    // eslint-disable-next-line
     async signup ({ commit }, user) {
       console.log("signup_store: ", JSON.stringify(user))
       await api.post(
@@ -56,10 +58,10 @@ export default new Vuex.Store({
         { headers: { 'Content-Type':'application/x-www-form-urlencoded' } }
       ).then(res => {
         console.log("signup: " + res)
-        commit(
+        this.dispatch(
           'login',
           {
-            id: user.name,
+            login_name: user.loginName,
             password: user.password
           }
         )
