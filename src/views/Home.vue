@@ -70,6 +70,7 @@ export default {
     if (!this.authUser) {
       this.$router.push('/login')
     }
+    this.id = this.authUser.id
     await this.updatePosts()
     await this.getRecommendedUsers()
   },
@@ -79,6 +80,7 @@ export default {
       console.log("[Home.vue] postSubmit()")
       this.isPostFormActivated = false
       await this.updatePosts()
+      await this.getRecommendedUsers()
     },
 
     async updatePosts() {
@@ -106,7 +108,7 @@ export default {
       console.log("[Home.vue] getReccommendedUsers()")
       try {
         const self = this
-        await this.myServer.get('/posts/suggest/' + self.id, this.headers)
+        await this.myServer.get('/posts/suggest/' + self.authUser.id, this.headers)
           .then(res => {
             console.log("response: " + JSON.stringify(res.data))
             self.recommendedUsers = res.data
@@ -119,7 +121,7 @@ export default {
 
   data () {
     return {
-      id: 1,
+      id: 0,
       posts: [],
       recommendedUsers: [],
       isPostFormActivated: false,

@@ -11,6 +11,7 @@
       </v-avatar>
     <div class="d-flex flex-column mt-4 mr-8">
       <span style="height:1.28em;">{{ post.user_name }}</span>
+      <span class="caption ml-3">@{{ post.login_name }}</span>
       <span style="font-size:8px;">{{ post.created_at }}</span>
       <p class="mt-2" style="text-align:justify;font-size:12.8px;">{{ post.comment }}</p>
     </div>

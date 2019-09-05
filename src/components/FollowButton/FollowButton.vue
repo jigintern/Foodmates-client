@@ -32,21 +32,11 @@ export default {
     })
   },
 
-  mounted () {
-    console.log("fb: ", this.user)
-    this.userAssociation = {
-      "UserId": this.authUser.id,
-      "FollowId": this.user.id
+  watch: {
+    user: {
+      handler: 'readFollowInfo',
+      immediate: true
     }
-    this.myServer.post(
-      '/friendships/isfollowing/',
-      this.userAssociation,
-      { headers: this.headers }
-    ).then(res => {
-      console.log("res_data: ", res.data)
-      console.log("ass: ", this.userAssociation)
-      this.isFollowing = res.data.following
-    })
   },
 
   data () {
@@ -61,6 +51,23 @@ export default {
   },
 
   methods: {
+    async readFollowInfo(user) {
+      console.log("fb: ", user)
+      this.userAssociation = {
+        "UserId": this.authUser.id,
+        "FollowId": user.id
+      }
+      await this.myServer.post(
+        '/friendships/isfollowing/',
+        this.userAssociation,
+        { headers: this.headers }
+      ).then(res => {
+        console.log("res_data: ", res.data)
+        console.log("ass: ", this.userAssociation)
+        this.isFollowing = res.data.following
+      })
+    },
+
     followToggle () {
       console.log("fb: ", this.user.id)
       this.userAssociation = {
