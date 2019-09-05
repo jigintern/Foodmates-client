@@ -91,7 +91,7 @@ export default {
       const params = new FormData()
       params.append('file', this.postImage)
       return await this.myServer.post(
-        '/upload/',
+        '/upload/picture/',
         params,
         { headers: { 'content-type': 'multipart/form-data' }}
       ).then(res => {

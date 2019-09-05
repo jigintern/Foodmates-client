@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn v-if="user" outlined rounded="" class="">
+    <v-btn v-if="user" outlined rounded="" class="px-4">
       <v-row>
         <v-col class="shrink" align-self="center">
           <v-avatar size="32">
@@ -8,7 +8,7 @@
           </v-avatar>
         </v-col>
         <v-col align-self="center">
-          <span class="title">{{ user.user_name }}</span>
+          <span class="title">{{ user.name }}</span>
           <span class="caption ml-3">@{{ user.id }}</span>
         </v-col>
       </v-row>

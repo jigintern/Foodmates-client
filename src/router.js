@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Profile from './views/Profile.vue'
 // import Debug from './views/Debug.vue'
 import Login from './views/Login.vue'
+import Signup from './views/Signup.vue'
 
 Vue.use(Router)
 
@@ -38,6 +39,12 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      // "http://localhost:8080/Signup"
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     }
   ]
 })

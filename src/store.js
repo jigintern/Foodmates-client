@@ -48,6 +48,27 @@ export default new Vuex.Store({
       commit('SET_AUTH_USER', null)
     },
 
+    async signup ({ commit }, user) {
+      console.log("signup_store: ", JSON.stringify(user))
+      await api.post(
+        '/users/signup/',
+        user,
+        { headers: { 'Content-Type':'application/x-www-form-urlencoded' } }
+      ).then(res => {
+        console.log("signup: " + res)
+        commit(
+          'login',
+          {
+            id: user.name,
+            password: user.password
+          }
+        )
+      })
+      .catch((e) => {
+        console.log('signup failed: ' + e)
+      })
+    },
+
     async viewUserInfo ({ commit }, id) {
       await api.get('/users/' + id)
         .then(res => {
