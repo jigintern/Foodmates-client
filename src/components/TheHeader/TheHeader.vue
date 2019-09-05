@@ -6,7 +6,6 @@
     <v-toolbar-items class="ml-auto">
       <the-header-search-window />
     </v-toolbar-items>
-    <the-header-user-card :user="authUser" />
     <v-btn @click="logout">ログアウト</v-btn>
   </v-app-bar>
 </template>
@@ -27,14 +26,7 @@ import TheHeaderLogo from './TheHeaderLogo/TheHeaderLogo'
 export default {
   components: {
     TheHeaderLogo,
-    TheHeaderSearchWindow,
-    TheHeaderUserCard
-  },
-
-  computed: {
-    ...mapGetters({
-      authUser: 'authUser'
-    })
+    TheHeaderSearchWindow
   },
 
   data () {

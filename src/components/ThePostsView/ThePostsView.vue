@@ -1,9 +1,23 @@
 <template>
-  <div>
+  <div class="wrapper">
     <post-card v-for="(post,index) in posts" :key="`post-${index}`" class="item"
         :post="post"/>
   </div>
 </template>
+
+<style lang="stylus" scoped>
+.wrapper
+  margin-left: 80px
+  padding: 4px 4%
+
+@media (max-width: 360px)
+  .wrapper
+    margin: 0
+
+@media (min-width: 1700px)
+  .wrapper
+    padding: 4px calc(50% - 800px)
+</style>
 
 <script>
 import PostCard from './PostCard/PostCard'
@@ -16,13 +30,13 @@ export default {
     PostCard
   },
   created () {
-    this.load()
+    this.positioning()
   },
   mounted () {
-    window.addEventListener('resize', this.load)
+    window.addEventListener('resize', this.positioning)
   },
   updated () {
-    this.load()
+    this.positioning()
   },
   methods: {
     min (h0, h1, h2) {
@@ -32,33 +46,31 @@ export default {
         return 1
       return 2
     },
-    load () {
-      let WIDTH = window.innerWidth
+    positioning () {
+      const WIDTH = window.innerWidth
       let el = document.getElementsByClassName('item')
       let heights = [120, 120, 120]
       if(WIDTH < 800){
         for(var i=0; i<el.length; i++){
-          el[i].style.width = '100%'
+          el[i].style.width = '92%'
           el[i].style.position = 'absolute'
           el[i].style.top = heights[0] + 'px'
-          el[i].style.left = 0 + 'px'
-          heights[0] += el[i].clientHeight + 32
+          el[i].style.left = '4%'
+          heights[0] += el[i].clientHeight + 16
         }
       }else{
+        let elWidth = ((WIDTH*0.92)-64-80)/3
         for(var i=0; i<Math.ceil(el.length/3); i++)
         for(var j=0; j<3 && 3*i+j<el.length; j++){
           let col = this.min(heights[0], heights[1], heights[2])
-          el[3*i+j].style.width = '30%'
+          el[3*i+j].style.width = elWidth + 'px'
           el[3*i+j].style.position = 'absolute'
           el[3*i+j].style.top = heights[col] + 'px'
-          el[3*i+j].style.left = 'calc( 33% *' + j + ')'
-          heights[col] += el[3*i+j].clientHeight + 32
+          el[3*i+j].style.left = 'calc( 4% + ' + (80 + elWidth*col + 16*(col-1)) +  'px )'
+          heights[col] += el[3*i+j].clientHeight + 16
         }
       }
     }
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-</style>

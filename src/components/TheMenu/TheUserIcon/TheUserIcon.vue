@@ -1,12 +1,13 @@
 <template>
   <div>
-    <v-avater size="32">
-      <v-img :src="`https://t2.intern.jigd.info/${user.icon_address}`" />
+    <!--
+    <v-avater small>
+      <!--<v-img :src="`https://t2.intern.jigd.info/${user.icon_address}`" />
       O
-    </v-avater>
+    </v-avater>-->
   </div>
 </template>
-
+<!--
 <script>
 export default {
   props: {
@@ -17,4 +18,5 @@ export default {
     }
   }
 }
+-->
 </script>
