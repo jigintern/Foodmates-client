@@ -7,7 +7,7 @@
     <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
     <div class="d-flex">
       <v-avatar small class="ma-4" style="cursor:pointer;" @click="goProfile">
-        <img :src="`img/users/icon/2.JPG`">
+        <img :src="`https://t2.intern.jigd.info/${post.icon_address}`">
       </v-avatar>
     <div class="d-flex flex-column mt-4 mr-8">
       <span style="height:1.28em;">{{ post.user_name }}</span>

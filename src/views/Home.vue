@@ -42,6 +42,7 @@ import Menu from '../components/TheMenu/TheMenu'
 import PostsView from '../components/ThePostsView/ThePostsView'
 import PostModal from '../components/ThePostModal/ThePostModal'
 import RecommendedUsers from '../components/TheRecommendedUsers/TheRecommendedUsers'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -51,7 +52,16 @@ export default {
     RecommendedUsers
   },
 
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    })
+  },
+
   async created () {
+    if (!this.authUser) {
+      this.$router.push('/login')
+    }
     await this.updatePosts()
     await this.getRecommendedUsers()
   },

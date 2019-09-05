@@ -1,6 +1,6 @@
 <template>
   <v-form class="search-window d-flex align-center">
-    <input placeholder="Search" class="search-bar white primary--text px-4" style="">
+    <input placeholder="Search" class="search-bar white primary--text px-4">
     <v-btn icon class="ml-2" color="white"><v-icon>search</v-icon></v-btn>
   </v-form>
 </template>

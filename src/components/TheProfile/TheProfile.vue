@@ -1,19 +1,21 @@
 <template>
 <div class="d-flex flex-wrap justify-center px-4 py-8 white">
-  <div style="background-color:#F5DD64;width:128px;height:128px;border-radius:64px"></div>
+  <v-avatar size="128">
+    <v-img :src="`https://t2.intern.jigd.info/${viewingUser.icon_address}`" />
+  </v-avatar>
   <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
-        <span style="height:1.28em;font-size:32px;">{{ profile.user_name }}</span>
+        <span style="height:1.28em;font-size:32px;">{{ viewingUser.name }}</span>
       </div>
-      <div v-if="account.id!='2'">
-        <FollowButton />
+      <div v-if="viewingUser.id != authUser.id">
+        <follow-button :user="viewingUser" />
       </div>
     </div>
-    <p class="" style="font-size:12px;">{{ profile.biography }}</p>
+    <p class="" style="font-size:12px;">{{ viewingUser.biography }}</p>
     <div class="d-flex align-center" style="font-size:8px;">
-      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ profile.birth }}</span>
-      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ profile.country + ' ' + profile.prefecture }}</span>
+      <v-icon class="figure mr-2" small>mdi-cake</v-icon><span class="mr-8">{{ viewingUser.birth }}</span>
+      <v-icon class="figure mr-2" small>mdi-city</v-icon><span class="mr-8">{{ viewingUser.country + ' ' + viewingUser.prefecture }}</span>
     </div>
   </div>
 </div>
@@ -21,9 +23,15 @@
 
 <script>
 import FollowButton from '../FollowButton/FollowButton'
+import { mapGetters } from 'vuex'
 
 export default {
-  props: ['profile'],
+  computed: {
+    ...mapGetters({
+      authUser: 'authUser',
+      viewingUser: 'viewingUser'
+    })
+  },
 
   components: {
     FollowButton
