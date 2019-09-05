@@ -1,19 +1,26 @@
 <template>
-  <v-card class="">
-    <header v-if="selectedDish" class="d-flex flex-column pa-2 primary white--text" color="primary" @click="selectedDish=0" style="cursor:pointer;">
-        <span class="suggest-info">{{ selectedDish.dish_name }}</span>
-        <span class="suggest-info">{{ selectedDish.store_name }}</span>
+  <v-card class="pa-4">
+    <header class="d-flex mx-n4 mt-n4 py-2 px-4 primary white--text" color="primary" style="cursor:pointer;">
+      <div v-if="selectedDish" class="d-flex flex-column" >
+        <span class="suggest-info" style="font-size:16px">{{ selectedDish.dish_name }}</span>
+        <span class="suggest-info" style="font-size:8px">{{ selectedDish.store_name }}</span>
+      </div>
+      <v-icon v-if="selectedDish" class="ml-auto" color="white" @click="selectedDish=0">mdi-close</v-icon>
     </header>
 
-    <search-window v-else @select_dish="selectDish" />
+    <search-window v-if="!addDishWindowOpenedFlag&&!selectedDish" @select_dish="selectDish" />
     <input type="file" @change="onImageChange" style="display: none;" ref="image">
-      <v-col align-self="center" justify="end">
-        <v-expansion-panels v-model="isAddDishWindowOpened" class="my-2">
-          <v-expansion-panel :key="0">
-            <v-expansion-panel-header class="px-2 py-0" expand-icon="mdi-plus">
-              <h1 class="ml-2 body-1">料理を登録</h1>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
+
+      <div align-self="center" justify="end">
+      <small v-if="!addDishWindowOpenedFlag&&!selectedDish" class="primary--text" style="cursor:pointer;" @click="addDishWindowOpenedFlag=true">または料理を新規登録</small>
+
+        <v-card v-if="addDishWindowOpenedFlag" v-model="isAddDishWindowOpened" class="my-2 pa-4">
+            <header class="d-flex px-2 py-2 primary mt-n4 mx-n4 white--text">
+              <span style="font-size:10px">料理登録</span>
+              <v-icon small color="white" class="ml-auto" @click="addDishWindowOpenedFlag=false">mdi-close</v-icon>
+            </header>
+          <div :key="0">
+            <div>
               <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
                 <v-text-field
                   v-model="newDishRestaurantName"
@@ -35,13 +42,13 @@
                   登録
                 </v-btn>
               </v-form>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </v-col>
+            </div>
+          </div>
+        </v-card>
+      </div>
 
     <v-textarea v-model="comment" label="Comment" auto-grow />
-    <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;"  @click="clearImage" class="pa-3" />
+    <img :src="uploadedImageForView" style="max-height:160px; width: 100%; object-fit: cover;"  @click="clearImage" class="pa-3" />
     <div class="d-flex">
       <v-btn v-if="!uploadedImageForView" icon @click="pickImage">
         <v-icon color="primary">mdi-image-plus</v-icon>
@@ -80,6 +87,7 @@ export default {
 
   data () {
     return {
+      addDishWindowOpenedFlag: false,
       uploadedImageForView: null,
       postImage: null,
       comment: '',
@@ -187,6 +195,7 @@ export default {
       this.uploadedImageForView = null
       this.comment = ''
       this.dishId = 0
+      this.addDishWindowOpenedFlag = false
     },
 
     async onCancel() {
@@ -215,6 +224,7 @@ export default {
         this.newDishRestaurantName = ''
         this.newDishName = ''
         this.$refs.searchWindow.updateSuggests()
+        this.addDishWindowOpenedFlag = false
       }).catch((e) => {
         console.log(e)
       })

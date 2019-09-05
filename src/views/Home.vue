@@ -4,10 +4,10 @@
     <posts-view class="post-view" :posts="posts" />
 
     <v-btn
-      :elevation="24"
+      large
       icon
       fixed bottom right
-      class="mr-8 mb-6"
+      class="post-button mr-4"
       color="primary"
       style="background-color:white;"
       @click="isPostFormActivated = true"
@@ -33,16 +33,15 @@
   top: 80px
   padding-left: 4%
 
-@media (min-width: 1700px)
-  .header
-    padding-left: calc(50% - 800px)
-
 @media (max-width: 360px)
   .menu
     position: fixed
     top: auto
     bottom: 0
     padding-left: 0
+  
+  .post-button
+    margin-bottom: 56px
 </style>
 
 <script>

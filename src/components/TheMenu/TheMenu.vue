@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex wrapper">
-    <v-btn v-if="!isUpdating" class="mb-2" icon @click="reflesh">
+    <v-btn v-if="!isUpdating" class="mr-8 mb-2" icon @click="reflesh">
       <v-icon>mdi-reload</v-icon>
     </v-btn>
     <v-progress-circular v-else indeterminate color="primary" />
@@ -18,9 +18,11 @@
 @media (max-width: 360px)
   .wrapper
     flex-direction: row
+    justify-content: center
     width: 100%
     padding-top: 8px
     background: #fff
+    filter: drop-shadow(0 -4px 4px #7f7f7f7f);
 </style>
 
 <script>

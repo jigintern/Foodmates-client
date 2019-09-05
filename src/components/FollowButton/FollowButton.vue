@@ -2,12 +2,13 @@
   <div>
     <v-btn
       @click="followToggle"
-      width="120"
+      width="100"
       :class="(isFollowing ? 'white--text' : 'orange--text') + ' ml-5'"
       :color="(isFollowing ? 'orange' : 'white')"
       :outlined="!isFollowing"
       depressed
       rounded
+      small
     >
       {{ isFollowing ? 'following' : 'follow' }}
     </v-btn>

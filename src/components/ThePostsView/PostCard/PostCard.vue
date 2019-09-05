@@ -1,8 +1,11 @@
 <template>
   <v-card>
-    <header class="d-flex flex-column py-2 px-4 primary white--text">
+    <header class="d-flex py-2 px-4 primary white--text">
+      <div class="d-flex flex-column">
         <span class="" style="font-size:16px;">{{ post.dish_name }}</span>
         <span class="" style="font-size:10px;">{{ post.store_name }}</span>
+      </div>
+      <span class="ml-auto" style="font-size:10px;">{{ post.created_at }}</span>
     </header>
     <v-img :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
     <div class="d-flex">
@@ -11,8 +14,7 @@
       </v-avatar>
     <div class="d-flex flex-column mt-4 mr-8">
       <span style="height:1.28em;">{{ post.user_name }}</span>
-      <span class="caption ml-3">@{{ post.login_name }}</span>
-      <span style="font-size:8px;">{{ post.created_at }}</span>
+      <span style="font-size:8px;" class="grey--text text--darken-2">@ {{ post.login_name }}</span>
       <p class="mt-2" style="text-align:justify;font-size:12.8px;">{{ post.comment }}</p>
     </div>
     </div>

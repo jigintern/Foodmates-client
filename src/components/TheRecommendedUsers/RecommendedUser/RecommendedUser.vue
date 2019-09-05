@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex pa-4">
+  <v-card class="card d-flex pa-4">
     <v-avatar class="mr-4" size="32">
       <img :src="`https://t2.intern.jigd.info/${userData.icon_address}`">
     </v-avatar>
@@ -14,6 +14,8 @@
 </template>
 
 <style lang="stylus" scoped>
+.card
+  min-width: 280px
 </style>
 
 <script>

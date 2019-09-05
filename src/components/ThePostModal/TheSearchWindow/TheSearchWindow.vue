@@ -1,16 +1,15 @@
 <template>
   <div>
-    <v-text-field label="Dish name" v-model="keyword" single-line filled hide-details />
+    <v-text-field label="Dish name" v-model="keyword" single-line hide-details />
     <div
       v-for="(suggest, index) in suggests()"
       @click="selectDish(suggest)"
       :key="`suggest-${index}`"
       style="cursor: pointer;"
-      class="my-2"
+      class="d-flex flex-column mx-2 my-2"
     >
-      <h2 class="body-1 suggest-info">{{ suggest.dish_name }}</h2>
-      <h5 class="caption grey--text suggest-info">{{ suggest.store_name }}</h5>
-      <v-divider class="mt-2" color="grey" />
+      <span class="suggest-info" style="font-size:14.4px;">{{ suggest.dish_name }}</span>
+      <span class="suggest-info" style="font-size:8px;">{{ suggest.store_name }}</span>
     </div>
   </div>
 </template>

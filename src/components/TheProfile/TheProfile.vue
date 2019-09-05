@@ -1,12 +1,13 @@
 <template>
-<div class="d-flex flex-wrap justify-center px-4 py-8 white">
+<div class="wrapper d-flex flex-wrap justify-center white">
   <v-avatar size="128">
     <v-img :src="`https://t2.intern.jigd.info/${viewingUser.icon_address}`" />
   </v-avatar>
-  <div class="d-flex flex-column ml-8" style="flex:0 1 640px;">
+  <div class="profile-text d-flex flex-column ml-8" style="flex:0 1 640px;">
     <div class="d-flex align-center pb-4">
       <div class="d-flex flex-column">
         <span style="height:1.28em;font-size:32px;">{{ viewingUser.name }}</span>
+        <span class="ml-1 grey--text text--darken-2" style="font-size:8px;">@ {{ viewingUser.login_name }}</span>
       </div>
       <div v-if="viewingUser.id != authUser.id">
         <follow-button :user="viewingUser" />
@@ -39,52 +40,18 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.push_button {
-  background-color: white;
-}
+<style lang="stylus" scoped>
+.wrapper
+  padding: 4px 4% 4px calc(4% + 48px)
 
-.push_button.active {
-  background-color: red;
-}
+@media (max-width: 360px)
+  .wrapper
+    padding: 4px 4%
 
-.profile
-  display flex
-  justify-content center
-  padding 24pt 0
-  height 200pt
-  background-color #fff
-  font-size 10pt
+@media (min-width: 1700px)
+  .wrapper
+    padding: 4px calc(50% - 800px) 4px calc(50% - 752px)
 
-  .case
-    margin-left 64pt
-    width 480pt
-
-    .profile-name
-      font-size 32pt
-      height 1.2em
-      font-weight 400
-
-      .button
-        margin-left 24pt
-        font-size 10pt
-
-    .profile-friendship
-      font-size 6.4pt
-
-    .profile-comment
-      margin-top 12pt
-      margin-bottom 24pt
-
-    .case
-      display flex
-      margin 0
-
-      .detail
-        margin-right 24pt
-
-        .figure
-          font-size 8pt
-          margin-right 4pt
-
+.profile-text
+  flex: 0 1
 </style>
