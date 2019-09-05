@@ -17,6 +17,7 @@
     
     <Menu class="menu" @reflesh="updatePosts" />
     <v-dialog
+      scrollable
       v-model="isPostFormActivated"
       width="360"
       z-index="10"

@@ -7,6 +7,38 @@
 
     <search-window v-else @select_dish="selectDish" />
     <input type="file" @change="onImageChange" style="display: none;" ref="image">
+      <v-col align-self="center" justify="end">
+        <v-expansion-panels v-model="isAddDishWindowOpened" class="my-2">
+          <v-expansion-panel :key="0">
+            <v-expansion-panel-header class="px-2 py-0" expand-icon="mdi-plus">
+              <h1 class="ml-2 body-1">料理を登録</h1>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
+                <v-text-field
+                  v-model="newDishRestaurantName"
+                  label="店名"
+                  @keyup.enter="onSubmitNewDish"
+                  style="width:100%;"
+                  class="pa-0 my-2"
+                  hide-details
+                />
+                <v-text-field
+                  v-model="newDishName"
+                  label="料理名"
+                  @keyup.enter="onSubmitNewDish"
+                  style="width:100%;"
+                  class="pa-0 my-2"
+                  hide-details
+                />
+                <v-btn @click="onSubmitNewDish" color="primary">
+                  登録
+                </v-btn>
+              </v-form>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
 
     <v-textarea v-model="comment" label="Comment" auto-grow />
     <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;"  @click="clearImage" class="pa-3" />
@@ -53,6 +85,9 @@ export default {
       comment: '',
       selectedDish: null,
       uploadFileName: '',
+      newDishRestaurantName: '',
+      newDishName: '',
+      isAddDishWindowOpened: [],
       headers: {
         'Content-Type':'application/x-www-form-urlencoded',
       }
@@ -161,6 +196,28 @@ export default {
 
     selectDish(dish) {
       this.selectedDish = dish
+    },
+
+    async onSubmitNewDish() {
+      console.log("[ThePostModal.vue] onSubmitNewDish()")
+      const self = this
+      const content = {
+        "store_name": this.newDishRestaurantName,
+        "dish_name": this.newDishName
+      }
+      self.myServer.post(
+        '/dishes/create/',
+        content,
+        { headers: this.headers }
+      ).then(res => {
+        this.selectedDish = res.data
+        this.isAddDishWindowOpened = []
+        this.newDishRestaurantName = ''
+        this.newDishName = ''
+        this.$refs.searchWindow.updateSuggests()
+      }).catch((e) => {
+        console.log(e)
+      })
     }
   }
 }

@@ -17,10 +17,8 @@
 
 <script>
 export default {
-  created() {
-    const self = this
-    this.myServer.get('/dishes/readall/', this.headers)
-      .then(res => {self.dishes = res.data})
+  async created() {
+    await this.updateSuggests()
   },
 
   data() {
@@ -34,6 +32,12 @@ export default {
   },
 
   methods: {
+    async updateSuggests () {
+      const self = this
+      this.myServer.get('/dishes/readall/', this.headers)
+        .then(res => {self.dishes = res.data})
+    },
+
     suggests () {
       let keys = this.keyword.split(' ');
       if(keys[0]=='') return []
