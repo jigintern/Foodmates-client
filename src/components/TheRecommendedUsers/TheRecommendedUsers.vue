@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper d-flex">
+  <div class="wrapper d-flex mt-2">
     <RecommendedUser
       class="ma-2"
       v-for="(user, index) in recommendedUsers"

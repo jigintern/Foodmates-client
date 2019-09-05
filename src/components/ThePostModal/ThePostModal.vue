@@ -1,55 +1,32 @@
 <template>
-<div>
-  <v-card class="pa-8" light>
+  <v-card class="">
+    <header v-if="selectedDish" class="d-flex flex-column pa-2 primary white--text" color="primary" @click="selectedDish=0" style="cursor:pointer;">
+        <span class="suggest-info">{{ selectedDish.dish_name }}</span>
+        <span class="suggest-info">{{ selectedDish.store_name }}</span>
+    </header>
 
-    <v-col>
-      <v-row>
-        <v-card v-if="selectedDish" class="d-flex align-center px-6 py-1 mb-2" @click="selectedDish=0" style="cursor:pointer;">
-          <div class="suggest-info">
-            <h2 class="body-1 suggest-info">{{ selectedDish.dish_name }}</h2>
-            <h5 class="caption grey--text suggest-info">{{ selectedDish.store_name }}</h5>
-          </div>
-        </v-card>
-      </v-row>
+    <search-window v-else @select_dish="selectDish" />
+    <input type="file" @change="onImageChange" style="display: none;" ref="image">
 
-      <v-row justify="center">
-        <v-col cols=12>
-          <search-window @select_dish="selectDish" />
-        </v-col>
-      </v-row>
-
-      <input type="file" @change="onImageChange" style="display: none;" ref="image">
-
-      <v-row justify="center">
-        <v-textarea v-model="comment" label="Comment" filled auto-grow />
-      </v-row>
-
-      <v-row justify="center">
-        <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;" class="pa-3" />
-      </v-row>
-
-      <v-row justify="center">
-        <v-col v-if="!uploadedImageForView" cols="2">
-          <v-btn icon @click="pickImage">
-            <v-icon color="primary">mdi-image-plus</v-icon>
-          </v-btn>
-        </v-col>
-        <v-col v-else cols="2">
-          <v-btn icon @click="clearImage">
-            <v-icon color="primary">close</v-icon>
-          </v-btn>
-        </v-col>
-        <v-col cols="4" class="px-1">
-          <v-btn color="primary" type="submit" @click="onSubmit" block>投稿</v-btn>
-        </v-col>
-        <v-col cols="4" class="px-1">
-          <v-btn outlined class="primary--text" @click="onCancel">キャンセル</v-btn>
-        </v-col>
-      </v-row>
-    </v-col>
+    <v-textarea v-model="comment" label="Comment" auto-grow />
+    <img :src="uploadedImageForView" style="max-height:200px; max-width=200px;"  @click="clearImage" class="pa-3" />
+    <div class="d-flex">
+      <v-btn v-if="!uploadedImageForView" icon @click="pickImage">
+        <v-icon color="primary">mdi-image-plus</v-icon>
+      </v-btn>
+      <v-btn class="ml-auto primary" depressed type="submit" @click="onSubmit">投稿</v-btn>
+      <v-btn outlined class="ml-2 primary--text" @click="onCancel">キャンセル</v-btn>
+    </div>
   </v-card>
-</div>
 </template>
+
+<style scoped>
+.suggest-info {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+</style>
 
 <script>
 import SearchWindow from './TheSearchWindow/TheSearchWindow'
@@ -188,19 +165,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.suggest-info {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.row {
-  padding: 0;
-}
-
-.col {
-  padding: 0;
-}
-</style>
