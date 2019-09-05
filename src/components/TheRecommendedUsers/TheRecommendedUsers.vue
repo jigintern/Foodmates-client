@@ -11,8 +11,9 @@
 
 <style lang="stylus" scoped>
 .wrapper
-  margin-left: 80px
+  margin-left: 48px
   padding: 4px 4%
+  overflow: no-display
 
 @media (max-width: 360px)
   .wrapper

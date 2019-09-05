@@ -38,9 +38,14 @@ export default {
 </script>
 
 <style scoped>
-
 .post-image {
   max-height: 300px;
   justify-content: center;
+}
+
+span{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>

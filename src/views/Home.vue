@@ -36,6 +36,13 @@
 @media (min-width: 1700px)
   .header
     padding-left: calc(50% - 800px)
+
+@media (max-width: 360px)
+  .menu
+    position: fixed
+    top: auto
+    bottom: 0
+    padding-left: 0
 </style>
 
 <script>

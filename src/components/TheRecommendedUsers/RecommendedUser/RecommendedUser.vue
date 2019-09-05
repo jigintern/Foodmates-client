@@ -7,11 +7,14 @@
       <span style="height:1.28em;font-size:14.4px;">{{ userData.name }}</span>
       <div class="d-flex">
         <span class="" style="font-size:8px;">{{ recommendedUser.times + " times match" }}</span>
-        <v-btn class="orange--text ml-8" outlined small rounded>follow</v-btn>
+        <v-btn class="primary--text ml-8" outlined small rounded>follow</v-btn>
       </div>
     </div>
   </v-card>
 </template>
+
+<style lang="stylus" scoped>
+</style>
 
 <script>
 export default {

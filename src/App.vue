@@ -7,20 +7,16 @@
   </v-app>
 </template>
 
-<script>
-import TheHeader from '@/components/TheHeader/TheHeader'
-
-export default {
-  components: {
-    TheHeader
-  },
-  data () {
-    return {}
-  }
-}
-</script>
-
 <style lang="stylus">
 body
   min-width: 320px
 </style>
+
+<script>
+import TheHeader from '@/components/TheHeader/TheHeader'
+export default {
+  components: {
+    TheHeader
+  }
+}
+</script>

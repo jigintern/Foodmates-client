@@ -5,8 +5,10 @@
   </div>
 </template>
 
+
 <style lang="stylus" scoped>
 .wrapper
+  position: relative
   margin-left: 80px
   padding: 4px 4%
 
@@ -29,11 +31,9 @@ export default {
   components: {
     PostCard
   },
-  created () {
-    this.positioning()
-  },
   mounted () {
     window.addEventListener('resize', this.positioning)
+    window.addEventListener('load', this.positioning)
   },
   updated () {
     this.positioning()
@@ -49,7 +49,7 @@ export default {
     positioning () {
       const WIDTH = window.innerWidth
       let el = document.getElementsByClassName('item')
-      let heights = [120, 120, 120]
+      let heights = [16, 16, 16]
       if(WIDTH < 800){
         for(var i=0; i<el.length; i++){
           el[i].style.width = '92%'
@@ -59,14 +59,13 @@ export default {
           heights[0] += el[i].clientHeight + 16
         }
       }else{
-        let elWidth = ((WIDTH*0.92)-64-80)/3
         for(var i=0; i<Math.ceil(el.length/3); i++)
         for(var j=0; j<3 && 3*i+j<el.length; j++){
           let col = this.min(heights[0], heights[1], heights[2])
-          el[3*i+j].style.width = elWidth + 'px'
+          el[3*i+j].style.width = 'calc((100% - 32px) / 3)'
           el[3*i+j].style.position = 'absolute'
           el[3*i+j].style.top = heights[col] + 'px'
-          el[3*i+j].style.left = 'calc( 4% + ' + (80 + elWidth*col + 16*(col-1)) +  'px )'
+          el[3*i+j].style.left = 'calc( ((100% - 32px) / 3) * ' +  col +  ' + 16px * ' + (col-1) + ' )'
           heights[col] += el[3*i+j].clientHeight + 16
         }
       }
