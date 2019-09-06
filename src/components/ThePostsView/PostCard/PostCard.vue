@@ -29,9 +29,6 @@
 <script>
 export default {
   props: ['post'],
-  mounted() {
-    console.log(this.post.image_address)
-  },
   methods: {
     goProfile () {
       this.$router.push({
