@@ -77,7 +77,7 @@ export default {
       try {
         this.isUpdating = true
         const self = this
-        await this.myServer.get('/posts/readall/', this.headers)
+        await this.myServer.get('/posts/read/' + this.$route.params.user_id, this.headers)
           .then(res => {
             console.log("response: " + JSON.stringify(res.data))
             self.posts = res.data

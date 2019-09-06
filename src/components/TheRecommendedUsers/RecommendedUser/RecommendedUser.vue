@@ -1,6 +1,6 @@
 <template>
   <v-card class="card d-flex pa-4">
-    <v-avatar class="mr-4" size="32">
+    <v-avatar class="mr-4" size="32" @click="goProfile" style="cursor:pointer;">
       <img :src="`https://t2.intern.jigd.info/${userData.icon_address}`" style="border-radius:50%;">
     </v-avatar>
     <div class="d-flex flex-column">
@@ -33,6 +33,12 @@ export default {
   },
 
   methods: {
+    goProfile () {
+      this.$router.push({
+        name: 'profile',
+        params: { user_id: this.userData.login_name }
+      })
+    },
     async getRecommendedUser() {
       console.log("[RecommendedUser.vue] getRecommendedUser()")
       try {

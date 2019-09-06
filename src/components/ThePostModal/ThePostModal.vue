@@ -14,7 +14,7 @@
       <div align-self="center" justify="end">
       <small v-if="!addDishWindowOpenedFlag&&!selectedDish" class="primary--text" style="cursor:pointer;" @click="addDishWindowOpenedFlag=true">または料理を新規登録</small>
 
-        <v-card v-if="addDishWindowOpenedFlag" v-model="isAddDishWindowOpened" class="my-2 pa-4">
+        <v-card v-if="addDishWindowOpenedFlag&&!selectedDish" v-model="isAddDishWindowOpened" class="my-2 pa-4">
             <header class="d-flex px-2 py-2 primary mt-n4 mx-n4 white--text">
               <span style="font-size:8px">料理登録</span>
               <v-icon small color="white" class="ml-auto" @click="addDishWindowOpenedFlag=false">mdi-close</v-icon>
