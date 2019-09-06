@@ -10,6 +10,7 @@
 <style lang="stylus">
 body
   min-width: 320px
+  overflow: hidden
 </style>
 
 <script>
