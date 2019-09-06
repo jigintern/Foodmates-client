@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-avater small>
+    <v-avatar size="32">
       <v-img :src="`https://t2.intern.jigd.info/${user.icon_address}`" />
-    </v-avater>
+    </v-avatar>
   </div>
 </template>
 

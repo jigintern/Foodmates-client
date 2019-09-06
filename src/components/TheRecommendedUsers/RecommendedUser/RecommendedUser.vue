@@ -1,7 +1,7 @@
 <template>
   <v-card class="card d-flex pa-4">
     <v-avatar class="mr-4" size="32">
-      <img :src="`https://t2.intern.jigd.info/${userData.icon_address}`">
+      <img :src="`https://t2.intern.jigd.info/${userData.icon_address}`" style="border-radius:50%;">
     </v-avatar>
     <div class="d-flex flex-column">
       <span style="height:1.28em;font-size:14.4px;">{{ userData.name }}</span>

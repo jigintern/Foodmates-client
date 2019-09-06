@@ -24,7 +24,7 @@
               <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center">
                 <v-text-field
                   v-model="newDishRestaurantName"
-                  label="店名"
+                  placeholder="店名"
                   @keyup.enter="onSubmitNewDish"
                   style="width:100%;"
                   class="pa-0 my-2"
@@ -32,7 +32,7 @@
                 />
                 <v-text-field
                   v-model="newDishName"
-                  label="料理名"
+                  placeholder="料理名"
                   @keyup.enter="onSubmitNewDish"
                   style="width:100%;"
                   class="pa-0 my-2"

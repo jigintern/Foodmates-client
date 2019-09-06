@@ -4,7 +4,7 @@
       <v-icon>mdi-reload</v-icon>
     </v-btn>
     <v-progress-circular v-else indeterminate color="primary" />
-    <v-btn class="mb-2" icon>
+    <v-btn class="mb-2 mr-8" icon>
       <v-icon @click="logout">mdi-logout-variant</v-icon>
     </v-btn>
     <the-user-icon :user="authUser" />
