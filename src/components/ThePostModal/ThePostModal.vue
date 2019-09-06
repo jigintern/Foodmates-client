@@ -171,8 +171,14 @@ export default {
     },
 
     async onSubmit() {
-      if(!this.selectedDish)
+      if(!selectedDish){
+      this.postImage = null
+      this.uploadedImageForView = null
+      this.comment = ''
+      this.dishId = 0
+      this.addDishWindowOpenedFlag = false
       return -1
+      }
       console.log("[ThePostModal.vue] onSubmit()")
       const self = this
       await this.addPost()
