@@ -171,6 +171,8 @@ export default {
     },
 
     async onSubmit() {
+      if(!this.selectedDish)
+      return -1
       console.log("[ThePostModal.vue] onSubmit()")
       const self = this
       await this.addPost()
