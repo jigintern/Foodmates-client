@@ -7,7 +7,7 @@
       </div>
       <span class="ml-auto" style="font-size:8px;">{{ post.created_at }}</span>
     </header>
-    <v-img v-if="`https://t2.intern.jigd.info/${post.image_address}`!=''" :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
+    <v-img v-if="post.image_address != ''" :src="`https://t2.intern.jigd.info/${post.image_address}`" class="post-image" />
     <div class="d-flex">
       <v-avatar small class="ma-4" style="cursor:pointer;" @click="goProfile">
         <img :src="`https://t2.intern.jigd.info/${post.icon_address}`">
@@ -29,6 +29,9 @@
 <script>
 export default {
   props: ['post'],
+  mounted() {
+    console.log(this.post.image_address)
+  },
   methods: {
     goProfile () {
       this.$router.push({
