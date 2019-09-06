@@ -30,26 +30,8 @@ export default {
   components: {
     PostCard
   },
-  async created () {
-    const wait = (sec) => {
-      return new Promise((resolve, reject) => {
-        setTimeout(resolve, sec*1000)
-      })
-    }
-    try {
-      await wait(1)
-      this.positioning()
-      await wait(1)
-      this.positioning()
-    } catch (err) {
-      console.error(err)
-    }
-  },
-  mounted () {
-    window.addEventListener('resize', this.positioning)
-  },
-  updated () {
-    this.positioning()
+  created () {
+    window.requestAnimationFrame(this.positioning);
   },
   methods: {
     min (h0, h1, h2) {
@@ -82,6 +64,7 @@ export default {
           heights[col] += el[3*i+j].clientHeight + 16
         }
       }
+      window.requestAnimationFrame(this.positioning);
     }
   }
 }
